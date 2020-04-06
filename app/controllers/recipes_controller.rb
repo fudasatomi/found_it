@@ -1,0 +1,16 @@
+class RecipesController < ApplicationController
+  def new
+  end
+
+  def index
+  end
+
+  def category_index
+  end
+
+  def show
+  end
+
+  def edit
+  end
+end
