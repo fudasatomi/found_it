@@ -1,0 +1,2 @@
+class Prosesse < ApplicationRecord
+end
