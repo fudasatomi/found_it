@@ -10,6 +10,56 @@
   </head>
 
   <body>
-    <%= yield %>
+    <!--ヘッダーの記述-->
+    <header class="navbar navbar-fixed-top jumbotron" >
+      <div class="container">
+        <div class="row-header-text">
+       <% if user_signed_in? %>
+                   <!--if文でサインインとアウト時の表示を変更-->
+        <nav class="nav navbar-nav navbar-left">
+          <h2><%= link_to 'Found_It!', root_path %></h2>
+        </nav>
+        <nav>
+          <ul class="nav nav-pills navbar-right">
+            <li class="navbar-text welcome-text">ようこそさん！</li>
+            <li class="topmenu"><%= link_to 'ABOUT', homes_about_path %></li>
+            <li class="topmenu"><%= link_to 'マイページ', user_path(current_user) %></li>
+            <li class="topmenu"><%= link_to 'レシピ一覧', recipes_path %></li>
+            <li class="topmenu"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete%></li>
+
+        <% else %>
+        <nav class="nav navbar-nav navbar-left">
+          <h2><%= link_to 'Found_It!', root_path %></h2>
+        </nav>
+        <nav>
+          <ul class="nav nav-pills navbar-right">
+            <li class="topmenu"><%= link_to 'ABOUT', homes_about_path %></li>
+            <li class="topmenu"><%= link_to 'レシピ一覧', recipes_path %></li>
+            <li class="topmenu"><%= link_to '新規登録',new_user_registration_path %></li>
+            <li class="topmenu"><%= link_to 'ログイン', new_user_session_path %></li>
+            <% end %>
+          </ul>
+        </nav>
+      </div>
+      </div>
+    </header>
+        <!--ヘッダーの記述-->
+    <div class="container">
+      <p id="notice"><%= notice %></p> <!--デバイスでnotice設定で呼び出し-->
+    </div>
+    <div class="contents">
+      <%= yield %>
+    </div>
+ <!--フッターの記述-->
+    <footer>
+      <div class="container">
+        <div class="row">
+            <div class="footer-contents">
+              <p class="footer-contents-p">【所在地】〒123-4567　長野県松本市丸の内4-1  【電話番号】123-4567-8901</p>
+            </div>
+        </div>
+      </div>
+    </footer>
+    <!-- フッターの記述 -->
   </body>
 </html>
