@@ -3,10 +3,10 @@
 		<div class="col-xs-10 col-xs-offset-1">
 			<h2>新規レシピ登録</h2>
 			<!-- エラーメッセージ -->
-			<% if @item.errors.any? %>
+			<% if @recipe.errors.any? %>
 			    <div id="error_explanation" class="alert alert-danger">
 			    	<ul>
-				        <% @item.errors.full_messages.each do |message| %>
+				        <% @recipe.errors.full_messages.each do |message| %>
 				            <li><%= message %></li>
 				        <% end %>
 			    	</ul>
@@ -23,14 +23,15 @@
 				</div>
 				<div class="col-xs-9">
 					<h3>カテゴリー</h3>
-						 <%= collection_select :category, :id, @category, :id, :name, {}, class: 'form-control' %>
+						 <%#= collection_select :category, :id, @category, :id, :name, {}, class: 'form-control' %>
 					<h3>タイトル</h3>
+						<%= f.text_field :title, class: "form-control" %>
 					<h3>概要</h3>
+						<%= f.text_field :outline, class: "form-control" %>
+						<%= f.hidden_field :is_closed, :value => false %>
 				</div>
-			</div>
-			<div class="row">
 				<div class="action">
-					<h3>投稿ボタン</h3>
+					<%= f.submit "材料・手順の入力に進む" ,class: "btn btn-lg" %>
 				</div>
 			</div>
 			<% end %>
