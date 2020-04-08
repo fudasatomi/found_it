@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_06_082709) do
+ActiveRecord::Schema.define(version: 2020_04_08_035724) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 2020_04_06_082709) do
     t.boolean "is_closed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "relationships", force: :cascade do |t|
