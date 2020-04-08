@@ -18,11 +18,11 @@ Rails.application.routes.draw do
    end
 
    resources :recipes do
-    resource :favorites, only:[:create,:destroy]
-    resource :book_comments, only:[:create, :destroy]
-    collection do
+    member do
       get 'category_index'
     end
+    resource :favorites, only:[:create,:destroy]
+    resource :comments, only:[:create, :destroy]
   end
 
     get 'search' => 'search#search', as: 'search'

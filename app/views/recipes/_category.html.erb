@@ -1,0 +1,8 @@
+<div class="col-xs-2">
+	<div class="category_table">
+		<h2>カテゴリーの一覧</h2>
+		<% categories.each do |c| %>
+			<div><%= link_to c.name, category_index_recipe_path(c) %></div>
+		<% end %>
+	</div>
+</div>
