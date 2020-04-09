@@ -12,9 +12,11 @@
 			    	</ul>
 			    </div>
 			<% end %>
-			<!-- エラーメッセージ -->
 			<%= form_for(@recipe) do |f| %>
 			<div class="row">
+				<h3>カテゴリー</h3>
+						 <%= f.select :category_id,  Category.all.map{|c| [c.name, c.id]},{},:class => 'form-control' %>
+
 				<div class="col-xs-3">
 					<h3>画像</h3>
 						<%= attachment_image_tag @recipe, :image, fallback: "no_image.jpg", id: "file-preview" %>
@@ -22,8 +24,6 @@
 						<label for="image_select" class="btn item_attachment_field" style="display: block;">画像選択</label>
 				</div>
 				<div class="col-xs-9">
-					<h3>カテゴリー</h3>
-						 <%#= collection_select :category, :id, @category, :id, :name, {}, class: 'form-control' %>
 					<h3>タイトル</h3>
 						<%= f.text_field :title, class: "form-control" %>
 					<h3>概要</h3>
