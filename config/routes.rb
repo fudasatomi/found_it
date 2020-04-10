@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'details/new'
   devise_for :users
 
   root 'homes#top'
@@ -20,6 +21,8 @@ Rails.application.routes.draw do
    resources :recipes do
     member do
       get 'category_index'
+      get 'detail_new'
+      post 'detail_create'
     end
     resource :favorites, only:[:create,:destroy]
     resource :comments, only:[:create, :destroy]

@@ -1,6 +1,6 @@
 class Recipe < ApplicationRecord
 
-	belongs_to :categorie
+	belongs_to :category
 	belongs_to :user
 
 	has_many :materials, dependent: :destroy
@@ -15,8 +15,8 @@ class Recipe < ApplicationRecord
 
 	validates :title, presence: true
 	validates :outline, presence: true
-	validates :image_id, presence: true
-	validates :category_id, presence: true
+	#validates :image_id, presence: true
+	#validates :category_id, presence: true
 
 	def if_is_closed
 		koukai = "公開"

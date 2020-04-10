@@ -6,13 +6,28 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params) #recipeモデルのテーブルを使用しているのでrecipeコントローラで保存する。
     @recipe.user_id = current_user.id
-    # if
-    @recipe.save #入力されたデータをdbに保存する。
-    redirect_to @recipe, notice: "successfully created recipe!"#保存された場合の移動先を指定。
-    # else
-      # @recipes = recipe.all
-      # render 'index'
-    # end
+    if @recipe.save
+      redirect_to detail_new_recipe_path(@recipe)
+    else
+      render :new
+    end
+  end
+
+  def detail_new
+    @material = Material.new
+    @prosesse = Prosesse.new
+  end
+
+  def detail_create
+    @recipe = Recipes.find(params[:id])
+
+    @material = Material.new
+    @material.recipe_id = @recipe.id
+    @material.save
+
+    @prosesse = Prosesse.new
+    @prosess.recipe_id = @recipe.id
+    @prosess.save
   end
 
   def index
@@ -27,9 +42,21 @@ class RecipesController < ApplicationController
   def edit
   end
 
+  def update
 
-  private
-    def recipe_params
-      params.require(:recipe).permit(:title,:outline, :image, :category_id, :is_closed )
-    end
+  end
+
+  def destroy
+  end
+
+    private
+      def recipe_params
+        params.require(:recipe).permit(:title,:outline, :image, :category_id, :is_closed )
+      end
+      def material_params
+        params.require(:material).permit(:recipe_id, :name, :image, :quantity, :maker)
+      end
+      def prosess_params
+        params.require(:prosess).permit(:recipe_id, :image, :explanation)
+      end
 end
