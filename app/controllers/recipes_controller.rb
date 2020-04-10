@@ -14,6 +14,7 @@ class RecipesController < ApplicationController
   end
 
   def detail_new
+    @recipe = Recipe.find(params[:id])
     @material = Material.new
     @prosesse = Prosesse.new
   end
@@ -28,6 +29,8 @@ class RecipesController < ApplicationController
     @prosesse = Prosesse.new
     @prosess.recipe_id = @recipe.id
     @prosess.save
+
+    redirect_to recipe_path(@recipe)
   end
 
   def index
