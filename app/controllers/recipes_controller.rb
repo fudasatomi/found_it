@@ -31,6 +31,8 @@ class RecipesController < ApplicationController
   end
 
   def index
+    @category = Category.includes(:children).where(parent_id: "0")
+    @recipes = Recipe.all
   end
 
   def category_index

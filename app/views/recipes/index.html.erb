@@ -1,2 +1,22 @@
-<h1>Recipes#index</h1>
-<p>Find me in app/views/recipes/index.html.erb</p>
+<div class="conteiner">
+	<div class="row">
+		<div class="col-xs-10 col-xs-offset-1">
+			<%= render 'recipes/category', category: @category, category_children: @category_children %>
+			<div class="col-xs-8">
+				<h2>レシピ一覧</h2>
+				<table>
+				<% @recipes.each do |recipe| %>
+					<tbody>
+						<tr>
+							<%= link_to (recipe) do %>
+								<%= attachment_image_tag recipe, :image, format: "jpeg" , fallback: "no_image.jpg" %>
+							<% end %>
+							<%= link_to recipe.title, recipe_path(recipe), class: "recipe_link" %>
+						</tr>
+					</tbody>
+				<% end %>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
