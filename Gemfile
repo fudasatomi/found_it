@@ -69,4 +69,4 @@ gem 'kaminari','~> 1.1.1'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'rubocop', require: false
 gem 'ransack'
-gem 'nested_form_fields'
+gem "cocoon"

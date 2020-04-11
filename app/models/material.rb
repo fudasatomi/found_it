@@ -1,4 +1,7 @@
 class Material < ApplicationRecord
+
+	belongs_to :recipe
+
 	attachment :image
 
 	validates :recipe_id, presence: true

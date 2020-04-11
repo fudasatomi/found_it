@@ -4,7 +4,9 @@ class Recipe < ApplicationRecord
 	belongs_to :user
 
 	has_many :materials, dependent: :destroy
+	accepts_nested_attributes_for :materials, allow_destroy: true
 	has_many :prosesses, dependent: :destroy
+	accepts_nested_attributes_for :prosesses, allow_destroy: true
 	has_many :favorites, dependent: :destroy
 	    def favorited_by?(user)
           favorites.where(user_id: user.id).exists?

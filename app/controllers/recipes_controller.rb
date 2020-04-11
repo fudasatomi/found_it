@@ -15,7 +15,7 @@ class RecipesController < ApplicationController
 
   def detail_new
     @recipe = Recipe.find(params[:id])
-    @material = Material.new
+    @material = @recipe.materials.build
     @prosesse = Prosesse.new
   end
 
@@ -56,12 +56,14 @@ class RecipesController < ApplicationController
 
     private
       def recipe_params
-        params.require(:recipe).permit(:title,:outline, :image, :category_id, :is_closed )
+        params.require(:recipe).permit(
+          :title,:outline, :image, :category_id, :is_closed,
+          materials_attributes:[:name, :image, :quantity, :maker,:_destroy])
       end
-      def material_params
-        params.require(:material).permit(:recipe_id, :name, :image, :quantity, :maker)
-      end
-      def prosess_params
-        params.require(:prosess).permit(:recipe_id, :image, :explanation)
-      end
+      #def material_params
+       # params.require(:material).permit(:recipe_id, :name, :image, :quantity, :maker)
+      #end
+      #def prosess_params
+       # params.require(:prosess).permit(:recipe_id, :image, :explanation)
+      #end
 end

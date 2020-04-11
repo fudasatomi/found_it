@@ -23,18 +23,22 @@
 			            <th></th>
 			        </tr>
 			        <tr>
-			        <%= f.nested_fields_for :materials, wrapper_tag: :tr do |q| %>
+			        <%= f.fields_for :materials do |m| %>
+			        <div class="nested-fields">
 			        	<td><%= attachment_image_tag @material, :image, fallback: "no_image.jpg", id: "file-preview" %>
-						<%= f.attachment_field :image, class: "btn  item_attachment_field", id: "image_select"%>
+						<%= m.attachment_field :image, class: "btn  item_attachment_field", id: "image_select"%>
 						<label for="image_select" class="btn item_attachment_field" style="display: block;">画像選択</label></td>
-		                <td><%= q.text_field   :name,     class: 'form-control' %></td>
-		                <td><%= q.number_field :quantity, class: 'form-control' %></td>
-		                <td><%= q.text_field   :maker,     class: 'form-control' %></td>
-		                <td><%= q.remove_nested_fields_link 'Delete', class: 'btn btn-danger', role: 'button' %></td>
+		                <td><%= m.text_field :name,class: 'form-control' %></td>
+		                <td><%= m.text_field :quantity, class: 'form-control' %></td>
+		                <td><%= m.text_field :maker, class: 'form-control' %></td>
+		                <td><%#= link_to_add_association "add item", m, :materials%></td>
+
+		                <td><%#= link_to_remove_association m 'Delete', class: 'btn btn-danger', role: 'button' %></td>
+		            </div>
 		            <% end %>
 		      </table>
-      			<%= f.add_nested_fields_link :materials, 'Add new', class: 'btn btn-primary', role: 'button' %>
-					<%= f.submit "材料を保存する" ,class: "btn btn-lg" %>
+      			<%#= f.add_fields_link :materials, 'Add new', class: 'btn btn-primary', role: 'button' %>
+					<%#= f.submit "材料を保存する" ,class: "btn btn-lg" %>
 					<% end %>
 			</div>
 		</div>
