@@ -31,15 +31,17 @@
 		                <td><%= m.text_field :name,class: 'form-control' %></td>
 		                <td><%= m.text_field :quantity, class: 'form-control' %></td>
 		                <td><%= m.text_field :maker, class: 'form-control' %></td>
-		                <td><%#= link_to_add_association "add item", m, :materials%></td>
-
 		                <td><%#= link_to_remove_association m 'Delete', class: 'btn btn-danger', role: 'button' %></td>
-		            </div>
 		            <% end %>
+		            <div class="links">
+		            	<%= link_to_add_association "add", f, :materials %>
+		            </div>
+		        </div>
+		        	<% end %>
 		      </table>
       			<%#= f.add_fields_link :materials, 'Add new', class: 'btn btn-primary', role: 'button' %>
 					<%#= f.submit "材料を保存する" ,class: "btn btn-lg" %>
-					<% end %>
+
 			</div>
 		</div>
 	</div>
