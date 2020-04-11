@@ -1,4 +1,4 @@
-<div class="nested-fields">
+<div class="nested-fields well well-compact">
   <table>
     <tr>
     <div class="form-group">
@@ -8,7 +8,7 @@
       <td><%= f.text_field :name,class: 'form-control' %></td>
       <td><%= f.text_field :quantity, class: 'form-control' %></td>
       <td><%= f.text_field :maker, class: 'form-control' %></td>
-      <td><%= link_to_remove_association "remove", f %></td>
+      <td><%= link_to_remove_association "remove", f, data: {:confirm => 'do you really want to do this?'}, class: 'btn btn-default btn-xs' %></td>
     </div>
   </tr>
 </table>
@@ -22,3 +22,18 @@
     </div>
   </div>
 </div>
+
+<!-- 画像選択した際に、選択した画像を表示させるjavascript -->
+<script>
+  document.getElementById('image_select').addEventListener('change', function (e) {
+    // 1枚だけ表示する
+    var file = e.target.files[0];
+
+    // ファイルのブラウザ上でのURLを取得する
+    var blobUrl = window.URL.createObjectURL(file);
+
+    // img要素に表示
+    var img = document.getElementById('file-preview');
+    img.src = blobUrl;
+});
+</script>

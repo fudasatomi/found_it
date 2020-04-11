@@ -2,17 +2,26 @@ class RecipesController < ApplicationController
   def new
     @recipe = Recipe.new
     @material = @recipe.materials.build
-    #@prosesse = @recipe.prosesses.build
+    #@prosesse = @recipe.prosesse.build
   end
 
   def create
-    @recipe = Recipe.new(recipe_params) #recipeモデルのテーブルを使用しているのでrecipeコントローラで保存する。
+    @recipe = Recipe.new(recipe_params)
     @recipe.user_id = current_user.id
-    if @recipe.save
-      redirect_to detail_new_recipe_path(@recipe)
-    else
-      render :new
+    respond_to do |format|
+      if @recipe.save
+        format.html { redirect_to(@recipe, :notice => 'Project was successfully created.') }
+        format.xml  { render :xml => @recipe, :status => :created, :location => @project }
+      else
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @recipe.errors, :status => :unprocessable_entity }
+      end
     end
+    #if @recipe.save
+    # redirect_to detail_new_recipe_path(@recipe)
+    #else
+    # render :new
+    #end
   end
 
   def detail_new
@@ -60,7 +69,7 @@ class RecipesController < ApplicationController
       def recipe_params
         params.require(:recipe).permit(
           :title,:outline, :image, :category_id, :is_closed,
-          materials_attributes:[:name, :image, :quantity, :maker,:_destroy])
+          materials_attributes:[:id, :recipe_id,:name, :image, :quantity, :maker,:_destroy])
       end
       #def material_params
        # params.require(:material).permit(:recipe_id, :name, :image, :quantity, :maker)
