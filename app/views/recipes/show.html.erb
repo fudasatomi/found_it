@@ -1,2 +1,35 @@
-<h1>Recipes#show</h1>
-<p>Find me in app/views/recipes/show.html.erb</p>
+<div class="conteiner">
+	<div class="row">
+		<div class="col-xs-10 col-xs-offset-1">
+			<%= render 'recipes/category', category: @category, category_children: @category_children %>
+			<div class="col-xs-8">
+				<h2>レシピ詳細</h2>
+				<h2>レシピ概要</h2>
+				<table>
+					<tbody>
+						<tr>
+							<%= link_to (@recipe) do %>
+								<%= attachment_image_tag @recipe, :image, format: "jpeg" , fallback: "no_image.jpg" %>
+							<% end %>
+							<%= link_to @recipe.title %>
+							<%= link_to @recipe.outline %>
+						</tr>
+					</tbody>
+				</table>
+				<h2>レシピ材料</h2>
+				<table>
+					<% @materials.each do |material| %>
+					<tbody>
+						<tr>
+							<%= attachment_image_tag material, :image, format: "jpeg" , fallback: "no_image.jpg" %>
+							<%= link_to material.name %>
+							<%= link_to material.maker %>
+							<%= link_to material.quantity %>
+						</tr>
+					</tbody>
+					<% end %>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

@@ -31,7 +31,7 @@ class RecipesController < ApplicationController
   end
 
   def detail_create
-    @recipe = Recipes.find(params[:id])
+    @recipe = Recipe.find(params[:id])
 
     @material = Material.new
     @material.recipe_id = @recipe.id
@@ -53,6 +53,10 @@ class RecipesController < ApplicationController
   end
 
   def show
+    @category = Category.includes(:children).where(parent_id: "0")
+    @recipe = Recipe.find(params[:id])
+    @materials = Material.where(recipe_id: @recipe.id)
+    @procedures = Procedure.where(recipe_id: @recipe.id)
   end
 
   def edit
