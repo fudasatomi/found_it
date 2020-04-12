@@ -5,8 +5,8 @@ class Recipe < ApplicationRecord
 
 	has_many :materials, dependent: :destroy
 	accepts_nested_attributes_for :materials, reject_if: :all_blank, allow_destroy: true
-	has_many :prosesses, dependent: :destroy
-	accepts_nested_attributes_for :prosesses, reject_if: :all_blank, allow_destroy: true
+	has_many :procedures, dependent: :destroy
+	accepts_nested_attributes_for :procedures, reject_if: :all_blank, allow_destroy: true
 	has_many :favorites, dependent: :destroy
 	    def favorited_by?(user)
           favorites.where(user_id: user.id).exists?

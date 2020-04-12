@@ -2,7 +2,7 @@ class RecipesController < ApplicationController
   def new
     @recipe = Recipe.new
     @material = @recipe.materials.build
-    #@prosesse = @recipe.prosesse.build
+    @procedure = @recipe.procedures.build
   end
 
   def create
