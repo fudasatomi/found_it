@@ -44,14 +44,6 @@ ActiveRecord::Schema.define(version: 2020_04_08_103106) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "prosesses", force: :cascade do |t|
-    t.integer "recipe_id"
-    t.string "image_id"
-    t.text "explanation"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "recipes", force: :cascade do |t|
     t.string "title"
     t.text "outline"
