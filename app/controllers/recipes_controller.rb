@@ -9,7 +9,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new(recipe_params)
     @recipe.user_id = current_user.id
     if @recipe.save
-     redirect_to detail_new_recipe_path(@recipe)
+      redirect_to new_recipe_material_path(@recipe)
     else
      render :new
     end

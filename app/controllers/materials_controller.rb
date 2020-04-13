@@ -5,7 +5,6 @@ class MaterialsController < ApplicationController
     @procedures = Procedure.where(recipe_id: @recipe.id)
 
     @material = Material.new
-    @material.recipe_id = @recipe.id
   end
 
   def create
@@ -14,8 +13,11 @@ class MaterialsController < ApplicationController
   	@material = Material.new(material_params)
     @material.recipe_id = @recipe.id
     if @material.save
-      	redirect_to new_recipe_material_path
+      	redirect_to new_recipe_material_path(@recipe)
     else
+    	@recipe = Recipe.find(params[:recipe_id])
+  		@materials = Material.where(recipe_id: @recipe.id)
+   		@procedures = Procedure.where(recipe_id: @recipe.id)
     	render :new
     end
   end
