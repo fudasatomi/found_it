@@ -8,40 +8,11 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     @recipe.user_id = current_user.id
-    respond_to do |format|
-      if @recipe.save
-        format.html { redirect_to(@recipe, :notice => 'Project was successfully created.') }
-        format.xml  { render :xml => @recipe, :status => :created, :location => @project }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @recipe.errors, :status => :unprocessable_entity }
-      end
+    if @recipe.save
+     redirect_to detail_new_recipe_path(@recipe)
+    else
+     render :new
     end
-    #if @recipe.save
-    # redirect_to detail_new_recipe_path(@recipe)
-    #else
-    # render :new
-    #end
-  end
-
-  def detail_new
-    @recipe = Recipe.find(params[:id])
-    @material = @recipe.materials.build
-    @prosesse = Prosesse.new
-  end
-
-  def detail_create
-    @recipe = Recipe.find(params[:id])
-
-    @material = Material.new
-    @material.recipe_id = @recipe.id
-    @material.save
-
-    @prosesse = Prosesse.new
-    @prosess.recipe_id = @recipe.id
-    @prosess.save
-
-    redirect_to recipe_path(@recipe)
   end
 
   def index
@@ -72,12 +43,8 @@ class RecipesController < ApplicationController
     private
       def recipe_params
         params.require(:recipe).permit(
-          :title,:outline, :image, :category_id, :is_closed,
-          materials_attributes:[:id, :recipe_id,:name, :image, :quantity, :maker,:_destroy])
+          :title,:outline, :image, :category_id, :is_closed)
       end
-      #def material_params
-       # params.require(:material).permit(:recipe_id, :name, :image, :quantity, :maker)
-      #end
       #def prosess_params
        # params.require(:prosess).permit(:recipe_id, :image, :explanation)
       #end

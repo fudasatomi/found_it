@@ -25,8 +25,6 @@ Rails.application.routes.draw do
    resources :recipes do
     member do
       get 'category_index'
-      get 'detail_new'
-      post 'detail_create'
     end
     resource :materials, only:[:create,:new,:edit ,:update,:destroy]
     resource :procedures, only:[:create,:new,:edit ,:update,:destroy]

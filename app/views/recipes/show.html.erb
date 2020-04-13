@@ -11,8 +11,8 @@
 							<%= link_to (@recipe) do %>
 								<%= attachment_image_tag @recipe, :image, format: "jpeg" , fallback: "no_image.jpg" %>
 							<% end %>
-							<%= link_to @recipe.title %>
-							<%= link_to @recipe.outline %>
+							<%= @recipe.title %>
+							<%= @recipe.outline %>
 						</tr>
 					</tbody>
 				</table>
@@ -22,9 +22,9 @@
 					<tbody>
 						<tr>
 							<%= attachment_image_tag material, :image, format: "jpeg" , fallback: "no_image.jpg" %>
-							<%= link_to material.name %>
-							<%= link_to material.maker %>
-							<%= link_to material.quantity %>
+							<%= material.name %>
+							<%= material.quantity %>
+							<%= material.maker %>
 						</tr>
 					</tbody>
 					<% end %>

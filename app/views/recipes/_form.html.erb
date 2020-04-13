@@ -16,14 +16,6 @@
 			<%= f.text_area :outline, class: "form-control" %>
 			<%= f.hidden_field :is_closed, :value => false %>
 	</div>
-	<div id="tasks">
-	    <%= f.fields_for :materials do |material| %>
-	      <%= render 'material_fields', f: material %>
-	    <% end %>
-	</div>
-	<div id="links">
-      <%= link_to_add_association 'add',f, :materials %>
-    </div>
 	<div class="action">
 		<%= f.submit "投稿" ,class: "btn btn-lg" %>
 	</div>

@@ -1,22 +1,81 @@
-<h1>Materials#new</h1>
-<p>Find me in app/views/materials/new.html.erb</p>
-<%= form_for(recipe) do |f| %>
-<div class="row">
-  <div class="col-xs-4">
-    <table>
-      <tr>
-        <div class="form-group">
-          <td>
-            <%= attachment_image_tag @material, :image, fallback: "no_image.jpg", id: "file-preview" %>
-            <%= f.attachment_field :image, class: "btn  item_attachment_field", id: "image_select"%>
-            <label for="image_select" class="btn item_attachment_field" style="display: block;">画像選択</label>
-          </td>
-          <td><%= f.text_field :name, class: 'form-control' %></td>
-          <td><%= f.text_field :quantity, class: 'form-control' %></td>
-          <td><%= f.text_field :maker, class: 'form-control' %></td>
-        </div>
-      </tr>
-    </table>
-  </div>
+<div class="conteiner">
+	<div class="row">
+		<div class="col-xs-10 col-xs-offset-1">
+			<h2>レシピ詳細内容登録</h2>
+			<!-- エラーメッセージ -->
+			<% if @material.errors.any? %>
+			    <div id="error_explanation" class="alert alert-danger">
+			    	<ul>
+				        <% material.errors.full_messages.each do |message| %>
+				            <li><%= message %></li>
+				        <% end %>
+			    	</ul>
+			    </div>
+			<% end %>
+			<!-- エラーメッセージ -->
+			<table>
+				<tbody>
+					<tr>
+						<td><%= link_to (@recipe) do %>
+							<%= attachment_image_tag @recipe, :image, format: "jpeg" , fallback: "no_image.jpg" %>
+						<% end %></td>
+						<td><%= @recipe.title %></td>
+						<td><%= @recipe.outline %></td>
+					</tr>
+				</tbody>
+			</table>
+			<h2>レシピ材料</h2>
+			<table>
+				<% @materials.each do |material| %>
+				<tbody>
+					<tr>
+						<td><%= attachment_image_tag material, :image, format: "jpeg" , fallback: "no_image.jpg" %></td>
+						<td><%= material.name %></td>
+						<td><%= material.quantity %></td>
+						<td><%= material.maker %></td>
+					</tr>
+				</tbody>
+				<% end %>
+			</table>
+			<div class="row">
+				<h3>材料登録</h3>
+				<table>
+					<%= form_for @material, url: recipe_materials_path do |f| %>
+					<tr>
+						<th>画像</th>
+			            <th>名称</th>
+			            <th>数量</th>
+			            <th>メーカー</th>
+			            <th></th>
+			        </tr>
+			        <tr>
+			        	<td><%= attachment_image_tag @material, :image, fallback: "no_image.jpg", id: "file-preview" %>
+						<%= f.attachment_field :image, class: "btn  item_attachment_field", id: "image_select"%>
+						<label for="image_select" class="btn item_attachment_field" style="display: block;">画像選択</label></td>
+		                <td><%= f.text_field :name, class: 'form-control' %></td>
+		                <td><%= f.text_field :quantity, class: 'form-control' %></td>
+		                <td><%= f.text_field :maker, class: 'form-control' %></td>
+		            </tr>
+		            <tr>
+						<%= f.submit "更に追加" ,class: "btn btn-lg" %>
+					<tr>
+		            <% end %>
+		        </table>
+			</div>
+		</div>
+	</div>
 </div>
-<% end %>
+<!-- 画像選択した際に、選択した画像を表示させるjavascript -->
+<script>
+	document.getElementById('image_select').addEventListener('change', function (e) {
+    // 1枚だけ表示する
+    var file = e.target.files[0];
+
+    // ファイルのブラウザ上でのURLを取得する
+    var blobUrl = window.URL.createObjectURL(file);
+
+    // img要素に表示
+    var img = document.getElementById('file-preview');
+    img.src = blobUrl;
+});
+</script>
