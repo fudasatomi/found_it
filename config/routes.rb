@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'procedures/new'
+  get 'procedures/edit'
+  get 'materials/new'
+  get 'materials/edit'
   get 'details/new'
   devise_for :users
 
@@ -24,6 +28,8 @@ Rails.application.routes.draw do
       get 'detail_new'
       post 'detail_create'
     end
+    resource :materials, only:[:create,:new,:edit ,:update,:destroy]
+    resource :procedures, only:[:create,:new,:edit ,:update,:destroy]
     resource :favorites, only:[:create,:destroy]
     resource :comments, only:[:create, :destroy]
   end

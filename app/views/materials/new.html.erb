@@ -1,0 +1,22 @@
+<h1>Materials#new</h1>
+<p>Find me in app/views/materials/new.html.erb</p>
+<%= form_for(recipe) do |f| %>
+<div class="row">
+  <div class="col-xs-4">
+    <table>
+      <tr>
+        <div class="form-group">
+          <td>
+            <%= attachment_image_tag @material, :image, fallback: "no_image.jpg", id: "file-preview" %>
+            <%= f.attachment_field :image, class: "btn  item_attachment_field", id: "image_select"%>
+            <label for="image_select" class="btn item_attachment_field" style="display: block;">画像選択</label>
+          </td>
+          <td><%= f.text_field :name, class: 'form-control' %></td>
+          <td><%= f.text_field :quantity, class: 'form-control' %></td>
+          <td><%= f.text_field :maker, class: 'form-control' %></td>
+        </div>
+      </tr>
+    </table>
+  </div>
+</div>
+<% end %>
