@@ -29,18 +29,20 @@
 				<% @materials.each do |material| %>
 				<tbody>
 					<tr>
-						<td><%= attachment_image_tag material, :image, format: "jpeg" , fallback: "no_image.jpg" %></td>
+						<td><%= attachment_image_tag material, :image, format: "jpeg" , fallback: "no_image.jpg", id: "material-image" %></td>
 						<td><%= material.name %></td>
 						<td><%= material.quantity %></td>
 						<td><%= material.maker %></td>
+						<td><%= link_to '編集する' ,edit_recipe_material_path(@recipe.id, material) %></td>
+						<td><%= link_to '削除する', recipe_material_path(@recipe.id, material),method: :delete, data: {confirm: "削除してよろしいですか？"} %></td>
 					</tr>
 				</tbody>
 				<% end %>
 			</table>
 			<div class="row">
 				<h3>材料登録</h3>
+				<%= form_for @material, url: recipe_materials_path do |f| %>
 				<table>
-					<%= form_for @material, url: recipe_materials_path do |f| %>
 					<tr>
 						<th>画像</th>
 			            <th>名称</th>
@@ -51,14 +53,15 @@
 			        <tr>
 			        	<td><%= attachment_image_tag @material, :image, fallback: "no_image.jpg", id: "file-preview" %>
 						<%= f.attachment_field :image, class: "btn  item_attachment_field", id: "image_select"%>
-						<label for="image_select" class="btn item_attachment_field" style="display: block;">画像選択</label></td>
+						<label for="image_select" class="btn btn-primary item_attachment_field" style="display: block;">画像選択</label></td>
 		                <td><%= f.text_field :name, class: 'form-control' %></td>
 		                <td><%= f.text_field :quantity, class: 'form-control' %></td>
 		                <td><%= f.text_field :maker, class: 'form-control' %></td>
 		            </tr>
 		            <tr>
-						<%= f.submit "更に追加" ,class: "btn btn-lg" %>
-					<tr>
+		            	<td><%= f.submit "材料を追加" ,class: "btn btn-lg" %></td>
+		            	<td><%= link_to '手順の入力に進む' ,new_recipe_procedure_path ,class: "btn btn-primary btn-lg" %></td>
+		            </tr>
 		            <% end %>
 		        </table>
 			</div>

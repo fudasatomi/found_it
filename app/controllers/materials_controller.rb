@@ -14,7 +14,7 @@ class MaterialsController < ApplicationController
   	@material = Material.new(material_params)
     @material.recipe_id = @recipe.id
     if @material.save
-      	redirect_to new_recipe_materials_path
+      	redirect_to new_recipe_material_path
     else
     	render :new
     end
@@ -27,6 +27,9 @@ class MaterialsController < ApplicationController
   end
 
   def destroy
+  	material = Material.find(params[:id])
+  	material.destroy
+  	redirect_to new_recipe_material_path
   end
 
   private

@@ -26,8 +26,8 @@ Rails.application.routes.draw do
     member do
       get 'category_index'
     end
-    resource :materials, only:[:create,:new,:edit ,:update,:destroy]
-    resource :procedures, only:[:create,:new,:edit ,:update,:destroy]
+    resources :materials, only:[:create,:new,:edit ,:update,:destroy]
+    resources :procedures, only:[:create,:new,:edit ,:update,:destroy]
     resource :favorites, only:[:create,:destroy]
     resource :comments, only:[:create, :destroy]
   end
