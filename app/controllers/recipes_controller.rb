@@ -21,6 +21,8 @@ class RecipesController < ApplicationController
   end
 
   def category_index
+    @category = Category.includes(:children).where(parent_id: "0")
+    @categories = Category.find(params[:id])
   end
 
   def show
