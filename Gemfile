@@ -69,3 +69,7 @@ gem 'kaminari','~> 1.1.1'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'rubocop', require: false
 gem 'ransack'
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
