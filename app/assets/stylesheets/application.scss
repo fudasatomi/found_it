@@ -23,6 +23,25 @@
 　font-family: Arial;
 }
 
+#file-preview{
+	width: 200px;
+	height: auto;
+}
+#material-image{
+	width: 100px;
+	height: auto;
+}
+#procedure-image{
+	width: 100px;
+	height: auto;
+}
+#image_select {
+	display: none;
+}
+.item_attachment_field{
+	margin: 1em auto;
+	width: 70% !important;
+}
 
 .contents{
 	padding-top:85px;

@@ -1,0 +1,17 @@
+<div class="col-xs-2">
+	<div class="category_table">
+		<h2>カテゴリーの一覧</h2>
+		<% category.each do |category| %>
+			<div>
+			<h4><%= link_to category.name, category_index_recipe_path(category) %></h4>
+				<% category.children.each do |sub_category| %>
+					<h6><%= link_to sub_category.name, category_index_recipe_path(sub_category) %></h6>
+<!-- @main_categories.each do |main_category| -->
+<!-- main_category.children.each_with_index do |sub_category,i| -->
+<!-- main_category.children[i].grand_children.each do |sub_subcategory| -->
+<!-- if sub_subcategory.id == sub_category.id -->
+				<% end %>
+			</div>
+		<% end %>
+	</div>
+</div>

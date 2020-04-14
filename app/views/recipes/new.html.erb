@@ -12,29 +12,7 @@
 			    	</ul>
 			    </div>
 			<% end %>
-			<!-- エラーメッセージ -->
-			<%= form_for(@recipe) do |f| %>
-			<div class="row">
-				<div class="col-xs-3">
-					<h3>画像</h3>
-						<%= attachment_image_tag @recipe, :image, fallback: "no_image.jpg", id: "file-preview" %>
-						<%= f.attachment_field :image, class: "btn  item_attachment_field", id: "image_select"%>
-						<label for="image_select" class="btn item_attachment_field" style="display: block;">画像選択</label>
-				</div>
-				<div class="col-xs-9">
-					<h3>カテゴリー</h3>
-						 <%#= collection_select :category, :id, @category, :id, :name, {}, class: 'form-control' %>
-					<h3>タイトル</h3>
-						<%= f.text_field :title, class: "form-control" %>
-					<h3>概要</h3>
-						<%= f.text_field :outline, class: "form-control" %>
-						<%= f.hidden_field :is_closed, :value => false %>
-				</div>
-				<div class="action">
-					<%= f.submit "材料・手順の入力に進む" ,class: "btn btn-lg" %>
-				</div>
-			</div>
-			<% end %>
+			<%= render 'form', recipe: @recipe %>
 		</div>
 	</div>
 </div>

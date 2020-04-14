@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ProsesseTest < ActiveSupport::TestCase
+class ProcedureTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
