@@ -23,9 +23,16 @@ class ProceduresController < ApplicationController
   end
 
   def edit
+    @procedure = Procedure.find(params[:id])
   end
 
   def update
+    @procedure = Procedure.find(params[:id])
+    if @procedure.update(procedure_params)
+      redirect_to edit_recipe_path(@procedure.recipe_id)
+    else
+      render :edit
+    end
   end
 
   def destroy

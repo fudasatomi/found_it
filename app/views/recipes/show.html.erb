@@ -4,6 +4,7 @@
 			<%= render 'recipes/category', category: @category, category_children: @category_children %>
 			<div class="col-xs-8">
 				<h2>レシピ詳細</h2>
+				<%= link_to "編集する", edit_recipe_path(@recipe),class: "btn btn-primary btn-lg" %>
 				<h2>レシピ概要</h2>
 				<table>
 					<tbody>

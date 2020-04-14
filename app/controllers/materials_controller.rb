@@ -29,7 +29,7 @@ class MaterialsController < ApplicationController
   def update
     @material = Material.find(params[:id])
     if @material.update(material_params)
-      redirect_to edit_recipe_path(@recipe)
+      redirect_to edit_recipe_path(@material.recipe_id)
     else
       render :edit
     end

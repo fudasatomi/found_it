@@ -62,7 +62,7 @@
 				        <th></th>
 				    </tr>
 				    <tr>
-				    	<td><%= attachment_image_tag @material, :image, fallback: "no_image.jpg", id: "file-preview" %>
+				    	<td><%= attachment_image_tag @procedure, :image, fallback: "no_image.jpg", id: "file-preview" %>
 						<%= f.attachment_field :image, class: "btn  item_attachment_field", id: "image_select"%>
 						<label for="image_select" class="btn btn-primary item_attachment_field" style="display: block;">画像選択</label></td>
 				        <td><%= f.text_area :explanation, class: 'form-control' %></td>
