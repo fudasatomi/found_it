@@ -23,9 +23,16 @@ class MaterialsController < ApplicationController
   end
 
   def edit
+    @material = Material.find(params[:id])
   end
 
   def update
+    @material = Material.find(params[:id])
+    if @material.update(material_params)
+      redirect_to edit_recipe_path(@recipe)
+    else
+      render :edit
+    end
   end
 
   def destroy

@@ -31,13 +31,24 @@ class RecipesController < ApplicationController
   end
 
   def edit
+    @recipe = Recipe.find(params[:id])
+    @materials = Material.where(recipe_id: @recipe.id)
+    @procedures = Procedure.where(recipe_id: @recipe.id)
   end
 
   def update
-
+    @recipe = Recipe.find(params[:id])
+    if @recipe.update(recipe_params)
+      redirect_to recipe_path(@recipe)
+    else
+      render :edit
+    end
   end
 
   def destroy
+    recipe = Recipe.find(params[:id])
+    recipe.destroy
+    redirect_to recipes_path
   end
 
     private
@@ -45,7 +56,4 @@ class RecipesController < ApplicationController
         params.require(:recipe).permit(
           :title,:outline, :image, :category_id, :is_closed)
       end
-      #def prosess_params
-       # params.require(:prosess).permit(:recipe_id, :image, :explanation)
-      #end
 end

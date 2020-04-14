@@ -4,14 +4,12 @@ class Recipe < ApplicationRecord
 	belongs_to :user
 
 	has_many :materials, dependent: :destroy
-	accepts_nested_attributes_for :materials, reject_if: :all_blank, allow_destroy: true
 	has_many :procedures, dependent: :destroy
-	accepts_nested_attributes_for :procedures, reject_if: :all_blank, allow_destroy: true
 	has_many :favorites, dependent: :destroy
 	    def favorited_by?(user)
           favorites.where(user_id: user.id).exists?
         end
-    has_many :book_comments, dependent: :destroy
+    has_many :comments, dependent: :destroy
 
 	attachment :image
 
@@ -23,7 +21,7 @@ class Recipe < ApplicationRecord
 	def if_is_closed
 		koukai = "公開"
 		hikoukai = "非公開"
-		if true == is_active
+		if true == is_closed
 			hikoukai
 		else
 			koukai

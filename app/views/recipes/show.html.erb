@@ -8,6 +8,7 @@
 				<table>
 					<tbody>
 						<tr>
+							<%= @recipe.if_is_closed %>
 							<%= link_to (@recipe) do %>
 								<%= attachment_image_tag @recipe, :image, format: "jpeg" , fallback: "no_image.jpg" %>
 							<% end %>
