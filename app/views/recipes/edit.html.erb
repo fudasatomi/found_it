@@ -1,31 +1,64 @@
 <div class="conteiner">
 	<div class="row">
 		<div class="col-xs-10 col-xs-offset-1">
-			<h2>新規レシピ登録</h2>
+			<h2>レシピ変更</h2>
+			<%= link_to '削除する', recipe_path(@recipe), method: :delete,class: "btn btn-primary btn-lg", data: {confirm: "削除してよろしいですか？"} %>
 			<div class="row">
+				<%= form_for(@recipe, url:recipe_path) do |f| %>
 				<div class="col-xs-3">
 					<h3>画像</h3>
+					<%= attachment_image_tag @recipe, :image, fallback: "no_image.jpg", id: "file-preview" %>
+					<%= f.attachment_field :image, class: "btn  item_attachment_field", id: "image_select"%>
+					<label for="image_select" class="btn item_attachment_field" style="display: block;">画像選択</label>
 				</div>
 				<div class="col-xs-9">
 					<h3>カテゴリー</h3>
+					<%= f.select :category_id,  Category.all.map{|c| [c.name, c.id]},{},:class => 'form-control' %>
 					<h3>タイトル</h3>
+					<%= f.text_field :title, class: "form-control" %>
 					<h3>概要</h3>
+					<%= f.text_area :outline, class: "form-control" %>
 				</div>
 			</div>
 			<div class="row">
-				<div class="material_new">
-					<h3>材料</h3>
-				</div>
-				<div class="prosesses_new">
-					<h3>手順</h3>
-				</div>
+			<h2>レシピ材料</h2>
+			<table>
+				<% @materials.each do |material| %>
+				<tbody>
+					<tr>
+						<td><%= attachment_image_tag material, :image, format: "jpeg" , fallback: "no_image.jpg", id: "material-image" %></td>
+						<td><%= material.name %></td>
+						<td><%= material.quantity %></td>
+						<td><%= material.maker %></td>
+						<td><%= link_to '編集する' ,edit_recipe_material_path(@recipe.id, material) %></td>
+						<td><%= link_to '削除する', recipe_material_path(@recipe.id, material),method: :delete, data: {confirm: "削除してよろしいですか？"} %></td>
+					</tr>
+				</tbody>
+				<% end %>
+			</table>
+			<h2>レシピ手順</h2>
+			<table>
+				<% @procedures.each do |procedure| %>
+				<tbody>
+					<tr>
+						<td><%= attachment_image_tag procedure, :image, format: "jpeg" , fallback: "no_image.jpg", id: "procedure-image" %></td>
+						<td><%= procedure.explanation %></td>
+						<td><%= link_to '編集する' ,edit_recipe_procedure_path(@recipe.id, procedure) %></td>
+						<td><%= link_to '削除する', recipe_procedure_path(@recipe.id, procedure),method: :delete, data: {confirm: "削除してよろしいですか？"} %></td>
+					</tr>
+				</tbody>
+				<% end %>
+			</table>
 			</div>
 			<div class="row">
 				<h3>公開・非公開</h3>
+				<span class="genre_span"><%= f.radio_button :is_closed, :true, checked: true %> 非公開</span>
+				<span class="genre_span"><%= f.radio_button :is_closed, :false %> 公開</span>
 			</div>
 			<div class="action">
-				<h3>投稿ボタン</h3>
+				<%= f.submit "変更" ,class: "btn btn-lg" %>
 			</div>
+			<% end %>
 		</div>
 	</div>
 </div>
