@@ -15,7 +15,6 @@ Rails.application.routes.draw do
     get 'followers' => 'relationships#followed', as: 'followers'
    collection do
      get 'leave'
-     get 'follow'
    end
    member do
      get 'recipes' => 'users#recipes', as:'recipe_indedx'
