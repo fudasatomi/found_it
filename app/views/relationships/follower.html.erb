@@ -1,1 +1,42 @@
-<h2>Follower Users</h2>
+<div class="conteiner">
+	<div class="row">
+		<div class="col-xs-10 col-xs-offset-1">
+			<h2>
+				<% if current_user != @user %>
+					<%= @user.name %>のフォロー
+				<% else %>
+					あなたのフォロワー
+				<% end %>
+			</h2>
+			<table class='table'>
+			  <thead>
+			    <tr>
+			      <th>image</th>
+			      <th>name</th>
+			      <th colspan="3"></th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <% @users.each do |user| %>
+			      <tr>
+			        <td><%= attachment_image_tag(user, :image, :fill, 50, 50, fallback: "no-image.jpg") %></td>
+			        <td><%= user.name %></td>
+			        <td>フォロー数：<%= user.follower.count %></td>
+			        <td>フォロワー数：<%= user.followed.count %></td>
+			        <td>
+					<% if current_user != user %>
+						<% if current_user.following?(user) %>
+						  <%= link_to 'フォロー外す', user_relationships_path(user.id), method: :delete ,class: "btn btn-primary btn-lg"%>
+						<% else %>
+						  <%= link_to 'フォローする', user_relationships_path(user.id), method: :POST ,class: "btn btn-success btn-lg"%>
+						<% end %>
+					<% end %>
+			        </td>
+			        <td><%= link_to '詳細へ', user_path(user),class: "btn btn-primary btn-sm" %></td>
+			      </tr>
+			    <% end %>
+			  </tbody>
+			</table>
+		</div>
+	</div>
+</div>

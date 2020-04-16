@@ -12,13 +12,13 @@ class RelationshipsController < ApplicationController
 
 # user　が　フォローしている人の一覧を見るページへのアクション
   def follower
-	#@user = User.find(params[:user_id])
-	#@users = user.following_user
+	@user = User.find(params[:user_id])
+	@users = @user.following_user
   end
 # user　を　フォローしている人の一覧を見るページへのアクション
   def followed
-	#@user = User.find(params[:user_id])
-	#@users = user.follower_user
+	@user = User.find(params[:user_id])
+	@users = @user.follower_user
   end
 
 end
