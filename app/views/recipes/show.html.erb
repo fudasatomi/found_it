@@ -4,7 +4,17 @@
 			<%= render 'recipes/category', category: @category, category_children: @category_children %>
 			<div class="col-xs-8">
 				<h2>レシピ詳細</h2>
-				<%= link_to "編集する", edit_recipe_path(@recipe),class: "btn btn-primary btn-lg" %>
+				<% if @recipe.user == current_user %>
+					<%= link_to "編集する", edit_recipe_path(@recipe),class: "btn btn-primary btn-lg" %>
+				<% end %>
+				<% if @recipe.favorited_by?(current_user) %>
+				    <%= link_to recipe_favorites_path(@recipe), method: :delete do %><span class="glyphicon glyphicon-heart"></span><% end %>
+				    <%= @recipe.favorites.count %> いいね
+				<% else %>
+				    <%= link_to recipe_favorites_path(@recipe), method: :post do %>
+				    <span class="glyphicon glyphicon-heart-empty"></span><% end %>
+				    <%= @recipe.favorites.count %> いいね
+				<% end %>
 				<h2>レシピ概要</h2>
 				<table>
 					<tbody>
@@ -48,6 +58,9 @@
 						<div class="row">
 							<%= comment.user.name %>
 							<%= comment.comment %>
+							<% if comment.user == current_user %>
+								<%= link_to '削除する', recipe_comment_path(@recipe.id,comment),method: :delete, data: {confirm: "コメントを削除してよろしいですか？"} %>
+							<% end %>
 						</div>
 					<% end %>
 				</div>
