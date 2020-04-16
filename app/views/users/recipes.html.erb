@@ -3,23 +3,20 @@
 		<div class="col-xs-10 col-xs-offset-1">
 			<%= render 'user_profile', user: @user %>
 
-			<div class="col-xs-5">
+			<div class="col-xs-9">
 				<h2><%= @user.name %>の投稿レシピ</h2>
-				<table>
-				<% @recipes.each do |recipe| %>
-					<tbody>
-						<tr>
-							<td>
-								<%= link_to (recipe) do %>
-								<%= attachment_image_tag recipe, :image, format: "jpeg" , fallback: "no_image.jpg" %><br>
-								<% end %>
-								<%= link_to recipe.title, recipe_path(recipe), class: "recipe_link" %>
-								<%= recipe.if_is_closed %>
-							</td>
-						</tr>
-					</tbody>
-				<% end %>
-				</table>
+				<p>全<strong><%= @recipes.count %></strong>件</p>
+				<div class="user_recipe_index">
+					<% @recipes.each do |recipe| %>
+						<div class="recipe_div">
+							<%= link_to (recipe) do %>
+							<%= attachment_image_tag recipe, :image, :fill, 200, 150,format: "jpeg" , fallback: "no_image.jpg", size:'200x150' %><br>
+							<% end %>
+							<%= link_to recipe.title, recipe_path(recipe), class: "recipe_link" %>
+							<%= recipe.if_is_closed %>
+						</div>
+					<% end %>
+				</div>
 			</div>
 		</div>
 	</div>
