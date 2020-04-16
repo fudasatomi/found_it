@@ -30,6 +30,8 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @materials = Material.where(recipe_id: @recipe.id)
     @procedures = Procedure.where(recipe_id: @recipe.id)
+    @comments = Comment.where(recipe_id: @recipe.id)
+    @comment = Comment.new
   end
 
   def edit

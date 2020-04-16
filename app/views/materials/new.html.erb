@@ -28,6 +28,19 @@
 				</tbody>
 				<% end %>
 			</table>
+			<h2>レシピ手順</h2>
+			<table>
+				<% @procedures.each do |procedure| %>
+				<tbody>
+					<tr>
+						<td><%= attachment_image_tag procedure, :image, format: "jpeg" , fallback: "no_image.jpg", id: "procedure-image" %></td>
+						<td><%= procedure.explanation %></td>
+						<td><%= link_to '編集する' ,edit_recipe_procedure_path(@recipe.id, procedure) %></td>
+						<td><%= link_to '削除する', recipe_procedure_path(@recipe.id, procedure),method: :delete, data: {confirm: "削除してよろしいですか？"} %></td>
+					</tr>
+				</tbody>
+				<% end %>
+			</table>
 			<div class="row">
 			<h3>材料登録</h3>
 			<!-- エラーメッセージ -->
@@ -41,7 +54,7 @@
 			    </div>
 			<% end %>
 			<!-- エラーメッセージ -->
-				<%= form_for @material, url: recipe_materials_path do |f| %>
+				<%= form_for [@recipe, @material] do |f| %>
 				<table>
 					<tr>
 						<th>画像</th>

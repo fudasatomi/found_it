@@ -22,6 +22,7 @@
 			</div>
 			<div class="row">
 			<h2>レシピ材料</h2>
+			<%= link_to '材料を追加する', new_recipe_material_path(@recipe),class: "btn btn-success btn-lg" %>
 			<table>
 				<% @materials.each do |material| %>
 				<tbody>
@@ -37,6 +38,7 @@
 				<% end %>
 			</table>
 			<h2>レシピ手順</h2>
+			<%= link_to '手順を追加する', new_recipe_procedure_path(@recipe),class: "btn btn-success btn-lg" %>
 			<table>
 				<% @procedures.each do |procedure| %>
 				<tbody>
