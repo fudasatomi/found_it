@@ -29,8 +29,8 @@ Rails.application.routes.draw do
     end
     resources :materials, only:[:create,:new,:edit ,:update,:destroy]
     resources :procedures, only:[:create,:new,:edit ,:update,:destroy]
+    resources :comments, only:[:create, :destroy]
     resource :favorites, only:[:create,:destroy]
-    resource :comments, only:[:create, :destroy]
   end
 
     get 'search' => 'search#search', as: 'search'
