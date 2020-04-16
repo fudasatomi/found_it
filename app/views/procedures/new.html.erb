@@ -54,7 +54,7 @@
 			    </div>
 			<% end %>
 			<!-- エラーメッセージ -->
-				<%= form_for @procedure, url: recipe_procedures_path do |f| %>
+				<%= form_for [@recipe, @procedure] do |f| %>
 				<table>
 					<tr>
 						<th>画像</th>

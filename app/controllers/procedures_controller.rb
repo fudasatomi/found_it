@@ -23,6 +23,7 @@ class ProceduresController < ApplicationController
   end
 
   def edit
+    @recipe = Recipe.find(params[:recipe_id])
     @procedure = Procedure.find(params[:id])
   end
 

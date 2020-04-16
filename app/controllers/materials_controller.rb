@@ -23,6 +23,7 @@ class MaterialsController < ApplicationController
   end
 
   def edit
+    @recipe = Recipe.find(params[:recipe_id])
     @material = Material.find(params[:id])
   end
 
