@@ -1,8 +1,8 @@
 class MaterialsController < ApplicationController
   def new
   	@recipe = Recipe.find(params[:recipe_id])
-  	@materials = Material.where(recipe_id: @recipe.id)
-    @procedures = Procedure.where(recipe_id: @recipe.id)
+    @materials = @recipe.materials
+    @procedures = @recipe.procedures
 
     @material = Material.new
   end
@@ -16,8 +16,8 @@ class MaterialsController < ApplicationController
       	redirect_to new_recipe_material_path(@recipe)
     else
     	@recipe = Recipe.find(params[:recipe_id])
-  		@materials = Material.where(recipe_id: @recipe.id)
-   		@procedures = Procedure.where(recipe_id: @recipe.id)
+      @materials = @recipe.materials
+      @procedures = @recipe.procedures
     	render :new
     end
   end
