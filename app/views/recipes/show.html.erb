@@ -2,22 +2,32 @@
 	<div class="row">
 		<div class="col-xs-10 col-xs-offset-1">
 			<%= render 'category', categories: @categories, categories_children: @categories_children %>
-			<div class="col-xs-8">
+			<div class="col-xs-10">
 				<div class="row">
-					<h2><%= @recipe.title %>
-						<% if @recipe.user == current_user %>
-							<%= link_to "編集する", edit_recipe_path(@recipe),class: "btn btn-primary btn-sm" %>
-						<% end %>
-					</h2>
-					<%= @recipe.if_is_closed %>
-					<% if @recipe.favorited_by?(current_user) %>
-					    <%= link_to recipe_favorites_path(@recipe), method: :delete do %><span class="glyphicon glyphicon-heart"></span><% end %>
-					    <%= @recipe.favorites.count %>
-					<% else %>
-					    <%= link_to recipe_favorites_path(@recipe), method: :post do %>
-					    <span class="glyphicon glyphicon-heart-empty"></span><% end %>
-					    <%= @recipe.favorites.count %>
-					<% end %>
+					<p>カテゴリー：<%= link_to @recipe.category.name, category_index_recipe_path(@recipe.category.id) %></p>
+					<table>
+						<tr>
+							<th class="col-xs-7">
+								<h2><%= @recipe.title %></h2>
+							</th>
+							<td>
+								<% if @recipe.user == current_user %>
+								<%= link_to "編集する", edit_recipe_path(@recipe),class: "btn btn-primary btn-sm" %>
+								<% end %>
+							</td>
+							<td><%= @recipe.if_is_closed %></td>
+							<td>
+								<% if @recipe.favorited_by?(current_user) %>
+								    <%= link_to recipe_favorites_path(@recipe), method: :delete do %><span class="glyphicon glyphicon-heart"></span><% end %>
+								    <%= @recipe.favorites.count %>
+								<% else %>
+								    <%= link_to recipe_favorites_path(@recipe), method: :post do %>
+								    <span class="glyphicon glyphicon-heart-empty"></span><% end %>
+								    <%= @recipe.favorites.count %>
+								<% end %>
+							</td>
+						</tr>
+					</table>
 				</div>
 				<div class="col-xs-5">
 					<%= attachment_image_tag @recipe, :image, :fill, 400, 300,format: "jpeg" , fallback: "no_image.jpg", size:'200x150' %>
@@ -42,9 +52,10 @@
 				<div class="row">
 					<h2>レシピ手順</h2>
 					<table class="table">
-						<% @procedures.each do |procedure| %>
+						<% @procedures.each.with_index(1) do |procedure, idx| %>
 						<tbody>
 							<tr>
+								<td><%= idx %></td>
 								<td><%= attachment_image_tag procedure, :image, format: "jpeg" , fallback: "no_image.jpg", id: "procedure-image" %></td>
 								<td><%= procedure.explanation %></td>
 							</tr>
@@ -54,19 +65,19 @@
 				</div>
 				<div class="row">
 					<div class="comment_index">
-					<h2>コメント一覧</h2>
-					<% @comments.each do |comment| %>
+					<h2>コメント</h2>
 						<table class="table">
 							<thead>
 								<tr>
-									<th>ニックネーム</th>
-									<th>コメント</th>
+									<th class="col-xs-2">ニックネーム</th>
+									<th class="col-xs-7">コメント</th>
 									<th></th>
 								</tr>
 							</thead>
+							<% @comments.each do |comment| %>
 							<tbody>
 								<tr>
-									<td>
+									<td><%= attachment_image_tag comment.user, :image, :fill, 60, 60, format: "jpeg" , fallback: "no_image.jpg" %>
 										<%= link_to comment.user.name, user_path(comment.user_id) %>
 									</td>
 									<td><%= comment.comment %></td>
@@ -77,21 +88,24 @@
 									</td>
 								</tr>
 							</tbody>
+							<% end %>
 						</table>
-					<% end %>
 					</div>
 				</div>
 				<div class="row">
 					<div class="new_comment">
-						<h2>コメント投稿</h2>
-						<%= form_for [@recipe, @comment] do |f| %>
-							<div class="row">
-								<div class="col-sm-12">
-								<%= f.text_area :comment, rows:'2', class: "form-control",placeholder: "コメントをここに" %>
-								</div>
-							</div>
-							<%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
-						<% end %>
+						<table class="table">
+							<tr>
+								<th>投稿</th>
+								<%= form_for [@recipe, @comment] do |f| %>
+								<td class="col-xs-8">
+									<%= f.text_area :comment, rows:'2', class: "form-control",placeholder: "コメントをここに" %>
+								</td>
+								<td><%= f.submit "送信する", class: "btn btn-primary" %>
+								</td>
+								<% end %>
+							</tr>
+						</table>
 					</div>
 				</div>
 			</div>

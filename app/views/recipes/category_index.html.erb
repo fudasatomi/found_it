@@ -4,7 +4,7 @@
 			<%= render 'category', categories: @categories, categories_children: @categories_children %>
 
 			<div class="col-xs-8">
-				<h2><strong><%= @categories.name %></strong>のレシピ一覧</h2>
+				<h2><strong><%= @category.name %></strong>のレシピ一覧</h2>
 					<%= render 'recipes_index', recipes: @recipes %>
 			</div>
 		</div>
