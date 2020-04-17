@@ -3,77 +3,96 @@
 		<div class="col-xs-10 col-xs-offset-1">
 			<%= render 'category', categories: @categories, categories_children: @categories_children %>
 			<div class="col-xs-8">
-				<h2>レシピ詳細</h2>
-				<% if @recipe.user == current_user %>
-					<%= link_to "編集する", edit_recipe_path(@recipe),class: "btn btn-primary btn-lg" %>
-				<% end %>
-				<% if @recipe.favorited_by?(current_user) %>
-				    <%= link_to recipe_favorites_path(@recipe), method: :delete do %><span class="glyphicon glyphicon-heart"></span><% end %>
-				    <%= @recipe.favorites.count %> いいね
-				<% else %>
-				    <%= link_to recipe_favorites_path(@recipe), method: :post do %>
-				    <span class="glyphicon glyphicon-heart-empty"></span><% end %>
-				    <%= @recipe.favorites.count %> いいね
-				<% end %>
-				<h2>レシピ概要</h2>
-				<table>
-					<tbody>
-						<tr>
-							<%= @recipe.if_is_closed %>
-							<%= link_to (@recipe) do %>
-								<%= attachment_image_tag @recipe, :image, format: "jpeg" , fallback: "no_image.jpg" %>
-							<% end %>
-							<%= @recipe.title %>
-							<%= @recipe.outline %>
-						</tr>
-					</tbody>
-				</table>
-				<h2>レシピ材料</h2>
-				<table>
-					<% @materials.each do |material| %>
-					<tbody>
-						<tr>
-							<td><%= attachment_image_tag material, :image, format: "jpeg" , fallback: "no_image.jpg", id: "material-image"  %></td>
-							<td><%= material.name %></td>
-							<td><%= material.quantity %></td>
-							<td><%= material.maker %></td>
-						</tr>
-					</tbody>
-					<% end %>
-				</table>
-				<h2>レシピ手順</h2>
-				<table>
-					<% @procedures.each do |procedure| %>
-					<tbody>
-						<tr>
-							<td><%= attachment_image_tag procedure, :image, format: "jpeg" , fallback: "no_image.jpg", id: "procedure-image" %></td>
-							<td><%= procedure.explanation %></td>
-						</tr>
-					</tbody>
-					<% end %>
-				</table>
-				<div class="comment_index">
-					<h2>コメント一覧</h2>
-					<% @comments.each do |comment| %>
-						<div class="row">
-							<%= comment.user.name %>
-							<%= comment.comment %>
-							<% if comment.user == current_user %>
-								<%= link_to '削除する', recipe_comment_path(@recipe.id,comment),method: :delete, data: {confirm: "コメントを削除してよろしいですか？"} %>
-							<% end %>
-						</div>
+				<div class="row">
+					<h2><%= @recipe.title %>
+						<% if @recipe.user == current_user %>
+							<%= link_to "編集する", edit_recipe_path(@recipe),class: "btn btn-primary btn-sm" %>
+						<% end %>
+					</h2>
+					<%= @recipe.if_is_closed %>
+					<% if @recipe.favorited_by?(current_user) %>
+					    <%= link_to recipe_favorites_path(@recipe), method: :delete do %><span class="glyphicon glyphicon-heart"></span><% end %>
+					    <%= @recipe.favorites.count %>
+					<% else %>
+					    <%= link_to recipe_favorites_path(@recipe), method: :post do %>
+					    <span class="glyphicon glyphicon-heart-empty"></span><% end %>
+					    <%= @recipe.favorites.count %>
 					<% end %>
 				</div>
-				<div class="new_comment">
-					<h2>コメント投稿</h2>
-					<%= form_for [@recipe, @comment] do |f| %>
-						<div class="row">
-							<div class="col-sm-12">
-							<%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
-							</div>
-						</div>
-						<%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+				<div class="col-xs-5">
+					<%= attachment_image_tag @recipe, :image, :fill, 400, 300,format: "jpeg" , fallback: "no_image.jpg", size:'200x150' %>
+				</div>
+				<div class="col-xs-7">
+					<h3><%= @recipe.outline %></h3>
+
+					<h2>レシピ材料</h2>
+					<table class="table">
+						<% @materials.each do |material| %>
+						<tbody>
+							<tr>
+								<td><%= attachment_image_tag material, :image, format: "jpeg" , fallback: "no_image.jpg", id: "material-image"  %></td>
+								<td><%= material.name %></td>
+								<td><%= material.quantity %></td>
+								<td><%= material.maker %></td>
+							</tr>
+						</tbody>
+						<% end %>
+					</table>
+				</div>
+				<div class="row">
+					<h2>レシピ手順</h2>
+					<table class="table">
+						<% @procedures.each do |procedure| %>
+						<tbody>
+							<tr>
+								<td><%= attachment_image_tag procedure, :image, format: "jpeg" , fallback: "no_image.jpg", id: "procedure-image" %></td>
+								<td><%= procedure.explanation %></td>
+							</tr>
+						</tbody>
+						<% end %>
+					</table>
+				</div>
+				<div class="row">
+					<div class="comment_index">
+					<h2>コメント一覧</h2>
+					<% @comments.each do |comment| %>
+						<table class="table">
+							<thead>
+								<tr>
+									<th>ニックネーム</th>
+									<th>コメント</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<%= link_to comment.user.name, user_path(comment.user_id) %>
+									</td>
+									<td><%= comment.comment %></td>
+									<td>
+									<% if comment.user == current_user %>
+										<%= link_to '削除する', recipe_comment_path(@recipe.id,comment),method: :delete, data: {confirm: "コメントを削除してよろしいですか？"} %>
+									<% end %>
+									</td>
+								</tr>
+							</tbody>
+						</table>
 					<% end %>
+					</div>
+				</div>
+				<div class="row">
+					<div class="new_comment">
+						<h2>コメント投稿</h2>
+						<%= form_for [@recipe, @comment] do |f| %>
+							<div class="row">
+								<div class="col-sm-12">
+								<%= f.text_area :comment, rows:'2', class: "form-control",placeholder: "コメントをここに" %>
+								</div>
+							</div>
+							<%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+						<% end %>
+					</div>
 				</div>
 			</div>
 		</div>
