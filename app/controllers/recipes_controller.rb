@@ -16,17 +16,18 @@ class RecipesController < ApplicationController
   end
 
   def index
-    @category = Category.includes(:children).where(parent_id: "0")
-    @recipes = Recipe.all
+    @categories = Category.includes(:children).where(parent_id: "0")
+    @recipes = Recipe.where(is_closed: false)
   end
 
   def category_index
-    @category = Category.includes(:children).where(parent_id: "0")
-    @categories = Category.find(params[:id])
+    @categories = Category.includes(:children).where(parent_id: "0")
+    @category = Category.find(params[:id])
+    @recipes = @category.recipes
   end
 
   def show
-    @category = Category.includes(:children).where(parent_id: "0")
+    @categories = Category.includes(:children).where(parent_id: "0")
     @recipe = Recipe.find(params[:id])
     @materials = Material.where(recipe_id: @recipe.id)
     @procedures = Procedure.where(recipe_id: @recipe.id)
