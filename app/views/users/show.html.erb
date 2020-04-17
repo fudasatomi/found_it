@@ -49,7 +49,13 @@
 				</div>
 			</div>
 			<div class="col-xs-4">
-				<h2>ユーザー投稿レシピ</h2>
+				<h2>
+					<% if current_user != @user %>
+						<%= @user.name %>の投降レシピ
+					<% else %>
+						あなたの投降レシピ
+					<% end %>
+				</h2>
 				<table class="table">
 				<% @recipes.first(4).each do |recipe| %>
 					<tbody>
