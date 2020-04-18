@@ -13,4 +13,9 @@ class FavoritesController < ApplicationController
     redirect_to recipe_path(recipe.id)
   end
 
+  def favorite
+    @user = User.find(params[:id])
+    @recipes = @user.favorite_recipes.includes(:user)
+  end
+
 end
