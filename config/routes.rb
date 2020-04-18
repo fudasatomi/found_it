@@ -27,12 +27,16 @@ Rails.application.routes.draw do
       get 'category_all_index'
       get 'category_index'
     end
+
+    collection do
+      get 'search' => 'recipes#search', as: 'search'
+    end
+
     resources :materials, only:[:create,:new,:edit ,:update,:destroy]
     resources :procedures, only:[:create,:new,:edit ,:update,:destroy]
     resources :comments, only:[:create, :destroy]
     resource :favorites, only:[:create,:destroy]
   end
 
-    get 'search' => 'search#search', as: 'search'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

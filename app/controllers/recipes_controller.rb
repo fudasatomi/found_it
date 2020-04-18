@@ -15,6 +15,11 @@ class RecipesController < ApplicationController
     end
   end
 
+  def search
+    @search = Recipe.ransack(params[:q])
+    @recipes = @search.result
+  end
+
   def index
     @category_list = ParentCategory.all
     @recipes = Recipe.where(is_closed: false)
@@ -68,5 +73,8 @@ class RecipesController < ApplicationController
       def recipe_params
         params.require(:recipe).permit(
           :title,:outline, :image, :category_id, :is_closed)
+      end
+      def search_params
+        params.permit(:title,:outline)
       end
 end

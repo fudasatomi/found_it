@@ -1,0 +1,14 @@
+<%= search_form_for (@search, url:search_recipes_path) do |f| %>
+ <div class="form-group">
+<!-- 　 検索対象のカラムを:hoge_contで示す。itemnameだったらitemname_cont -->
+   <%= f.label :title_cont, "Name" %>
+   <%= f.search_field :title_cont, class: "form-control" %>
+ </div>
+ <div class="actions"><%= f.submit "検索" %></div>
+<% end %>
+
+<% if @recipes.any? %>
+ <% @recipes.each do |result| %>
+   <p><%= result.title %></p>
+ <% end %>
+<% end %>
