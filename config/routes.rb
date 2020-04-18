@@ -18,7 +18,7 @@ Rails.application.routes.draw do
    end
    member do
      get 'recipes' => 'users#recipes', as:'recipe_indedx'
-     get 'favorite'
+     get 'favorite' => 'favorites#favorite', as:'favorite'
    end
    end
 
