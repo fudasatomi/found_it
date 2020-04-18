@@ -1,6 +1,6 @@
 class HomesController < ApplicationController
   def top
-	@categories = Category.includes(:children).where(parent_id: "0")
+	@category_list = ParentCategory.all
   end
 
   def about
