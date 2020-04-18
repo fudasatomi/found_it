@@ -2,8 +2,8 @@
 	<div class="row">
 		<div class="col-xs-10 col-xs-offset-1">
 			<%= render 'category', categories: @category_list %>
-			<div class="col-xs-8">
-				<h2><strong><%= @parent_category.name %></strong>のレシピ一覧</h2>
+			<div class="col-xs-9">
+				<h2><strong><%= @parent_category.name %></strong>の全カテゴリーレシピ一覧</h2>
 					<%= render 'recipes_index', recipes: @recipes %>
 			</div>
 		</div>

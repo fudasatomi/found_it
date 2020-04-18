@@ -8,10 +8,10 @@
 
 
 # 親カテゴリー
-ParentCategory.create(id:1, name:"ビーズ/すべて")
-ParentCategory.create(id:2, name:"編み物・ソーイング/すべて")
-ParentCategory.create(id:3, name:"アート・雑貨/すべて")
-ParentCategory.create(id:4, name:"ベビー・キッズ/すべて")
+ParentCategory.create(id:1, name:"ビーズ")
+ParentCategory.create(id:2, name:"編み物・ソーイング")
+ParentCategory.create(id:3, name:"アート・雑貨")
+ParentCategory.create(id:4, name:"ベビー・キッズ")
 
 # 子分類　parent_category_id:1
 Category.create(id:1, name:"ネックレス", parent_category_id:1)

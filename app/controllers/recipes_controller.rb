@@ -35,6 +35,8 @@ class RecipesController < ApplicationController
   def show
     @category_list = ParentCategory.all
     @recipe = Recipe.find(params[:id])
+    @category = @recipe.category
+    @parent_category = @category.parent_category
     @materials = @recipe.materials
     @procedures = @recipe.procedures
     @comments = @recipe.comments
