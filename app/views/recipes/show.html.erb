@@ -1,10 +1,12 @@
 <div class="conteiner">
 	<div class="row">
 		<div class="col-xs-10 col-xs-offset-1">
-			<%= render 'category', categories: @categories, categories_children: @categories_children %>
-			<div class="col-xs-10">
+			<%= render 'category', categories: @category_list %>
+			<div class="col-xs-9">
 				<div class="row">
-					<p>カテゴリー：<%= link_to @recipe.category.name, category_index_recipe_path(@recipe.category.id) %></p>
+					<p>
+						カテゴリー：<%= link_to @parent_category.name, category_all_index_recipe_path(@parent_category) %>
+							><%= link_to @category.name, category_index_recipe_path(@category) %></p>
 					<table>
 						<tr>
 							<th class="col-xs-7">

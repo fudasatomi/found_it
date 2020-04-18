@@ -24,6 +24,7 @@ Rails.application.routes.draw do
 
    resources :recipes do
     member do
+      get 'category_all_index'
       get 'category_index'
     end
     resources :materials, only:[:create,:new,:edit ,:update,:destroy]
