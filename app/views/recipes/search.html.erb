@@ -1,14 +1,24 @@
-<%= search_form_for (@search, url:search_recipes_path) do |f| %>
- <div class="form-group">
-<!-- 　 検索対象のカラムを:hoge_contで示す。itemnameだったらitemname_cont -->
-   <%= f.label :title_cont, "Name" %>
-   <%= f.search_field :title_cont, class: "form-control" %>
- </div>
- <div class="actions"><%= f.submit "検索" %></div>
-<% end %>
+<div class="conteiner">
+	<div class="row">
+		<div class="col-xs-10 col-xs-offset-1">
+			<%= render 'category', categories: @category_list %>
+			<div class="col-xs-8">
+				<h2>レシピ　絞り込み検索</h2>
+				<%= search_form_for @q do |f| %>
+					<div class="form-group">
+					<!-- 　 検索対象のカラムを:hoge_contで示す。itemnameだったらitemname_cont -->
 
-<% if @recipes.any? %>
- <% @recipes.each do |result| %>
-   <p><%= result.title %></p>
- <% end %>
-<% end %>
+					<%= f.label :category_id_eq, 'カテゴリー' %>
+					<%= f.grouped_collection_select(:category_id_eq, ParentCategory.all, :category, :name, :id, :name,{include_blank: '選択してください'},class: 'form-control' )%>
+
+					<%= f.label :title_or_outline_cont, "タイトル・説明キーワード" %>
+					<%= f.search_field :title_or_outline_cont, placeholder: '検索ワードを入力', class: "form-control" %>
+
+					<%= f.label :materials_name_cont, "材料キーワード" %>
+					<%= f.search_field :materials_name_cont, placeholder: '検索ワードを入力', class: "form-control" %>
+					<div class="actions"><%= f.submit "検索" %></div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

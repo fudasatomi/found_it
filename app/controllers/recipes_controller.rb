@@ -16,13 +16,15 @@ class RecipesController < ApplicationController
   end
 
   def search
-    @search = Recipe.ransack(params[:q])
-    @recipes = @search.result
+    @category_list = ParentCategory.all
+    @q        = Recipe.where(is_closed: false).search(params[:q])
   end
 
   def index
     @category_list = ParentCategory.all
-    @recipes = Recipe.where(is_closed: false)
+    #@recipes = Recipe.where(is_closed: false)
+    @q        = Recipe.where(is_closed: false).search(params[:q])
+    @recipes = @q.result(distinct: true)
   end
 
   def category_all_index

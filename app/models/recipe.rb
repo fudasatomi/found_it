@@ -15,8 +15,11 @@ class Recipe < ApplicationRecord
 
 	validates :title, presence: true
 	validates :outline, presence: true
-	#validates :image_id, presence: true
-	#validates :category_id, presence: true
+	validates :category_id, presence: true
+
+  	def self.ransackable_attributes(auth_object = nil)
+    %w(title outline)
+	end
 
 	def if_is_closed
 		koukai = "公開"
