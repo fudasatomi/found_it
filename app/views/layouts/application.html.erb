@@ -13,19 +13,29 @@
     <!--ヘッダーの記述-->
     <header class="navbar navbar-fixed-top jumbotron" >
       <div class="container">
-        <div class="row-header-text">
-       <% if user_signed_in? %>
+        <div class="row-header-text">       <% if user_signed_in? %>
+
                    <!--if文でサインインとアウト時の表示を変更-->
         <nav class="nav navbar-nav navbar-left">
           <h2><%= link_to 'Found_It!', root_path %></h2>
         </nav>
         <nav>
           <ul class="nav nav-pills navbar-right">
-            <li class="navbar-text welcome-text">ようこそ <strong><%= current_user.name %></strong> さん！</li>
-            <li class="topmenu"><%= link_to 'レシピを投稿', new_recipe_path,class: "btn btn-success" %></li>
+            <li class="user_mypage">
+              <%= link_to user_path(current_user) do %>
+              <%= attachment_image_tag current_user, :image, :fill,format: 'jpeg', class: "profile-thumb", fallback: "no_image.jpg", size:'25x25' %><strong>　<%= current_user.name %></strong><% end %>
+            </li>
+            <li class="topmenu"><%= link_to 'レシピを投稿', new_recipe_path %></li>
             <li class="topmenu"><%= link_to 'ABOUT', homes_about_path %></li>
-            <li class="topmenu"><%= link_to 'マイページ', user_path(current_user) %></li>
             <li class="topmenu"><%= link_to 'レシピ一覧', recipes_path %></li>
+            <form class="navbar-form navbar-left" role="search">
+              <%= search_form_for @q do |f| %>
+              <div class="form-group">
+                <%= f.search_field :title_or_outline_cont, placeholder: '検索ワードを入力', class: "form-control" %>
+                <%= f.submit "検索",class: "btn btn-primary" %>
+              </div>
+              <% end %>
+            </form>
             <li class="topmenu"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete%></li>
 
         <% else %>

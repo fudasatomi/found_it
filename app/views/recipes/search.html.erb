@@ -7,16 +7,25 @@
 				<%= search_form_for @q do |f| %>
 					<div class="form-group">
 					<!-- 　 検索対象のカラムを:hoge_contで示す。itemnameだったらitemname_cont -->
-
-					<%= f.label :category_id_eq, 'カテゴリー' %>
-					<%= f.grouped_collection_select(:category_id_eq, ParentCategory.all, :category, :name, :id, :name,{include_blank: '選択してください'},class: 'form-control' )%>
-
-					<%= f.label :title_or_outline_cont, "タイトル・説明キーワード" %>
-					<%= f.search_field :title_or_outline_cont, placeholder: '検索ワードを入力', class: "form-control" %>
-
-					<%= f.label :materials_name_cont, "材料キーワード" %>
-					<%= f.search_field :materials_name_cont, placeholder: '検索ワードを入力', class: "form-control" %>
-					<div class="actions"><%= f.submit "検索" %></div>
+						<table class="table">
+							<tbody>
+							<tr>
+								<th class="col-xs-4"><%= f.label :category_id_eq, 'カテゴリー' %></th>
+								<td><%= f.grouped_collection_select(:category_id_eq, ParentCategory.all, :category, :name, :id, :name,{include_blank: '選択してください'},class: 'form-control' )%></td>
+							</tr>
+							<tr>
+								<th class="col-xs-4"><%= f.label :title_or_outline_cont, "タイトル・説明キーワード" %></th>
+								<td><%= f.search_field :title_or_outline_cont, placeholder: '検索ワードを入力', class: "form-control" %></td>
+							</tr>
+							<tr>
+								<th class="col-xs-4"><%= f.label :materials_name_cont, "材料キーワード" %></th>
+								<td><%= f.search_field :materials_name_cont, placeholder: '検索ワードを入力', class: "form-control" %></td>
+							</tr>
+							<tr>
+								<td align="center" colspan="2" ><%= f.submit "検索",class: "btn btn-primary btn-lg" %></td>
+							</tr>
+						</tbody>
+					</table>
 				<% end %>
 			</div>
 		</div>
