@@ -1,5 +1,7 @@
 <div class="col-xs-3">
 	<div class="category_table">
+		<div><%= link_to 'レシピ詳細検索' ,search_recipes_path ,class: "btn btn-primary" %>
+		</div>
 		<h3>カテゴリー一覧</h3>
 		<% categories.each do |parent| %>
 			<div>
