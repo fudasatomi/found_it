@@ -22,11 +22,11 @@
   box-sizing: border-box;
 　font-family: Arial;
 }
+.headerlogo{
+	height: 60px;
+	width: auto;
+}
 
-// #file-preview{
-	// width: 200px;
-	// height: auto;
-// }
 #material-image{
 	width: 100px;
 	height: 80px;
@@ -50,34 +50,7 @@
     padding-bottom: 40px;/*←footerの高さ*/
     box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
 }
-.jumbotron {
-	padding: 10px;
-	background-color: #fadd76;
-}
 
-header {
-	a {
-	color: SaddleBrown;
-	font-family: Arial;
-	font-size: 16px;
-	font-weight: bold;
-}
-	li {
-	font-size: 15px;
-	padding: 6px;
-	margin-right: -20px;
-	position: absolute;
-	left: 50px;
-}
-	ul {
-	padding-right: 20px;
-    }
-
-}
-
-body {
-	background-color: Ivory;
-}
 
 footer {
 	margin-top: 30px;
