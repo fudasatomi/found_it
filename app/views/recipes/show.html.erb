@@ -6,7 +6,7 @@
 				<div class="row">
 					<p>
 						カテゴリー：<%= link_to @parent_category.name, category_all_index_recipe_path(@parent_category) %>
-							><%= link_to @category.name, category_index_recipe_path(@category) %></p>
+							 ＞ <%= link_to @category.name, category_index_recipe_path(@category) %></p>
 					<table>
 						<tr>
 							<th class="col-xs-7">
@@ -19,14 +19,9 @@
 							</td>
 							<td><%= @recipe.if_is_closed %></td>
 							<td>
-								<% if @recipe.favorited_by?(current_user) %>
-								    <%= link_to recipe_favorites_path(@recipe), method: :delete do %><span class="glyphicon glyphicon-heart"></span><% end %>
-								    <%= @recipe.favorites.count %>
-								<% else %>
-								    <%= link_to recipe_favorites_path(@recipe), method: :post do %>
-								    <span class="glyphicon glyphicon-heart-empty"></span><% end %>
-								    <%= @recipe.favorites.count %>
-								<% end %>
+								<div id="favorite_buttons_<%= @recipe.id %>">
+									<%= render partial: 'favorites/favorite_btn', locals: { recipe: @recipe} %>
+								</div>
 							</td>
 						</tr>
 					</table>

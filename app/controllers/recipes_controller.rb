@@ -21,32 +21,24 @@ class RecipesController < ApplicationController
   end
 
   def search
-    #@category_list = ParentCategory.all
-    #@q        = Recipe.where(is_closed: false).ransack(params[:q])
+    #ransackの検索で使用する変数は、application_controllerのset_searchで定義済み
   end
 
   def index
-    #@category_list = ParentCategory.all
-    #@recipes = Recipe.where(is_closed: false)
-    #@q        = Recipe.where(is_closed: false).ransack(params[:q])
     @recipes = @q.result(distinct: true)
   end
 
   def category_all_index
-    #@category_list = ParentCategory.all
     @parent_category = ParentCategory.find(params[:id])
     @recipes = @parent_category.recipes.where(is_closed: false)
   end
 
   def category_index
-    #@category_list = ParentCategory.all
     @category = Category.find(params[:id])
     @recipes = @category.recipes.where(is_closed: false)
   end
 
   def show
-    #@category_list = ParentCategory.all
-    #@recipe = Recipe.find(params[:id])
     @category = @recipe.category
     @parent_category = @category.parent_category
     @materials = @recipe.materials
@@ -56,13 +48,11 @@ class RecipesController < ApplicationController
   end
 
   def edit
-    #@recipe = Recipe.find(params[:id])
     @materials = @recipe.materials
     @procedures = @recipe.procedures
   end
 
   def update
-    #@recipe = Recipe.find(params[:id])
     if @recipe.update(recipe_params)
       redirect_to recipe_path(@recipe)
     else
@@ -77,7 +67,7 @@ class RecipesController < ApplicationController
   end
 
     private
-      def category_list
+      def category_list #ページの左側のカテゴリーリスト
         @category_list = ParentCategory.all
       end
 
@@ -88,8 +78,5 @@ class RecipesController < ApplicationController
       def recipe_params
         params.require(:recipe).permit(
           :title,:outline, :image, :category_id, :is_closed)
-      end
-      def search_params
-        params.permit(:title,:outline)
       end
 end
