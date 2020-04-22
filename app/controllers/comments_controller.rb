@@ -1,24 +1,27 @@
 class CommentsController < ApplicationController
   def create
-  	recipe = Recipe.find(params[:recipe_id])
-    comment = current_user.comments.new(comment_params)
-    comment.recipe_id = recipe.id
-    if comment.save
-      redirect_to recipe_path(recipe)
-    else
-      @comments = Comment.where(recipe_id: recipe.id)
-      render "recipes/show"
-    end
+  	@recipe = Recipe.find(params[:recipe_id])
+    @comment = Comment.new(comment_params)
+    @comment.user_id = current_user.id
+    @comment.recipe_id = @recipe.id
+    @comment.save
+    @comments = @recipe.comments
+    #if comment.save
+     # redirect_to recipe_path(recipe)
+    #else
+    #  @comments = Comment.where(recipe_id: recipe.id)
+    #  render "recipes/show"
+    #end
   end
 
   def destroy
-    recipe = Recipe.find(params[:recipe_id])
-    comment = Comment.find(params[:id])
-    if comment.user == current_user
-      comment.destroy
-      redirect_to recipe_path(recipe)
-    else
+    @recipe = Recipe.find(params[:recipe_id])
+    @comment = Comment.find(params[:id])
+    @comments = @recipe.comments
+    if @comment.user != current_user
       redirect_to request.referer
+    else
+      @comment.destroy
     end
   end
 

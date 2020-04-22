@@ -1,0 +1,24 @@
+<table class="table">
+	<thead>
+		<tr>
+			<th class="col-xs-2">ニックネーム</th>
+			<th class="col-xs-7">コメント</th>
+			<th></th>
+		</tr>
+	</thead>
+	<% comments.each do |comment| %>
+	<tbody>
+		<tr>
+			<td><%= attachment_image_tag comment.user, :image, :fill, 60, 60, format: "jpeg" , fallback: "no_image.jpg" %>
+				<%= link_to comment.user.name, user_path(comment.user_id) %>
+			</td>
+			<td><%= comment.comment %></td>
+			<td>
+			<% if comment.user == current_user %>
+				<%= link_to '削除する', recipe_comment_path(recipe.id, comment.id),method: :delete, remote: true,data: {confirm: "コメントを削除してよろしいですか？"} %>
+			<% end %>
+			</td>
+		</tr>
+	</tbody>
+	<% end %>
+</table>
