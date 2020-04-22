@@ -10,17 +10,24 @@
   </head>
 
   <body>
-    <!--ヘッダーの記述-->
-    <header class="navbar navbar-fixed-top jumbotron" >
-      <div class="container">
-        <div class="row-header-text">       <% if user_signed_in? %>
+    <nav class="navbar navbar-default navbar-fixed-top" style="background-color: #fafae1;">
 
-                   <!--if文でサインインとアウト時の表示を変更-->
-        <nav class="nav navbar-nav navbar-left">
-          <h2><%= link_to 'Found_It!', root_path %></h2>
-        </nav>
-        <nav>
-          <ul class="nav nav-pills navbar-right">
+    <% if user_signed_in? %>
+
+      <div class="container-fluid">
+        <div class="row-header-text">
+          <ul class="nav nav-pills navbar-left col-xs-10 col-xs-offset-1">
+            <li><%= link_to image_tag('logo2.png', class: 'headerlogo'),root_path %></li>
+            <li>
+            <div class="navbar-form navbar-left" role="search">
+              <%= search_form_for @q, url: recipes_path,html: { method: :get } do |f| %>
+              <div class="form-group">
+                <%= f.text_field :title_or_outline_cont, placeholder: 'キーワードで検索', class: "form-control" %>
+                <%= f.submit "検索",class: "btn btn-primary" %>
+              </div>
+              <% end %>
+            </div>
+            </li>
             <li class="user_mypage">
               <%= link_to user_path(current_user) do %>
               <%= attachment_image_tag @header_icon_user, :image, :fill, 25, 25, format: 'jpeg', class: "profile-thumb", fallback: "no_image.jpg", size:'25x25' %>
@@ -29,57 +36,47 @@
             <li class="topmenu"><%= link_to 'レシピを投稿', new_recipe_path %></li>
             <li class="topmenu"><%= link_to 'ABOUT', homes_about_path %></li>
             <li class="topmenu"><%= link_to 'レシピ一覧', recipes_path %></li>
-            <li>
-              <div class="navbar-form navbar-left" role="search">
-                <%= search_form_for @q, url: recipes_path,html: { method: :get } do |f| %>
-                <div class="form-group">
-                  <%= f.text_field :title_or_outline_cont, placeholder: 'キーワードで検索', class: "form-control" %>
-                  <%= f.submit "検索",class: "btn btn-primary" %>
-                </div>
-                <% end %>
-              </div>
-            </li>
             <li class="topmenu"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete%></li>
+          </ul>
+        </div>
+      </div>
 
         <% else %>
-        <nav class="nav navbar-nav navbar-left">
-          <h2><%= link_to 'Found_It!', root_path %></h2>
-        </nav>
-        <nav>
-          <ul class="nav nav-pills navbar-right">
+
+      <div class="container-fluid">
+        <div class="row-header-text">
+          <ul class="nav nav-pills navbar-left col-xs-10 col-xs-offset-1">
+            <li><%= link_to image_tag('logo2.png', class: 'headerlogo'),root_path %></li>
+            <li>
+            <div class="navbar-form navbar-left" role="search">
+              <%= search_form_for @q, url: recipes_path,html: { method: :get } do |f| %>
+              <div class="form-group">
+                <%= f.text_field :title_or_outline_cont, placeholder: 'キーワードで検索', class: "form-control" %>
+                <%= f.submit "検索",class: "btn btn-primary" %>
+              </div>
+              <% end %>
+            </div>
+            </li>
             <li class="topmenu"><%= link_to 'ABOUT', homes_about_path %></li>
             <li class="topmenu"><%= link_to 'レシピ一覧', recipes_path %></li>
-            <li>
-              <div class="navbar-form navbar-left" role="search">
-                <%= search_form_for @q, url: recipes_path,html: { method: :get } do |f| %>
-                <div class="form-group">
-                  <%= f.text_field :title_or_outline_cont, placeholder: 'キーワードで検索', class: "form-control" %>
-                  <%= f.submit "検索",class: "btn btn-primary" %>
-                </div>
-                <% end %>
-              </div>
-            </li>
             <li class="topmenu"><%= link_to '新規登録',new_user_registration_path %></li>
             <li class="topmenu"><%= link_to 'ログイン', new_user_session_path %></li>
-            <% end %>
           </ul>
-        </nav>
+        </div>
       </div>
-      </div>
-    </header>
+
+      <% end %>
+    </nav>
         <!--ヘッダーの記述-->
-    <div class="container">
-      <p id="notice"><%= notice %></p> <!--デバイスでnotice設定で呼び出し-->
-    </div>
     <div class="contents">
       <%= yield %>
     </div>
  <!--フッターの記述-->
-    <footer>
+    <footer  style="background-color: #fafae1;">
       <div class="container">
         <div class="row">
             <div class="footer-contents">
-              <p class="footer-contents-p">Found</p>
+              <p class="footer-contents-p">Found  it!</p>
             </div>
         </div>
       </div>
