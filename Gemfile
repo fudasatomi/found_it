@@ -66,7 +66,6 @@ gem 'jquery-rails'
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem 'refile-mini_magick'
 gem 'kaminari','~> 1.1.1'
-gem 'acts-as-taggable-on', '~> 6.0'
 gem 'rubocop', require: false
 gem 'ransack'
 gem 'dotenv-rails'
