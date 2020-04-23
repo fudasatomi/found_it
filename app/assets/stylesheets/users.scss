@@ -2,3 +2,32 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.user_profile{
+	margin-top: 30px;
+	table{
+		border:0.5px solid #747474;
+		border-radius: 5px;
+		border-collapse: separate;
+  		border-spacing: 0;
+	}
+	thead{
+		th{
+		font-size: 1.2em;
+		color: #fff;
+		background-color: #747474;
+		border-radius: 5px;
+		text-align: center;
+		}
+	}
+	tbody{
+		th{
+		font-size: 1.1em;
+		color: #04949c;
+		text-align: center;
+		}
+		.name{
+		color: #000000;
+		}
+	}
+
+}

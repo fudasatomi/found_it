@@ -1,29 +1,37 @@
-<div class="col-xs-3">
-	<h2>ユーザー情報</h2>
-		<table class="table">
-			<tbody>
-				<tr>
-					<td colspan="2"><%= attachment_image_tag user, :image, :fill, 100, 100, format: 'jpeg', class: "profile-thumb", fallback: "no_image.jpg", size:'100x100' %>
-					</td>
-				</tr>
-				<tr>
-					<th>ニックネーム</th>
-					<td><%= link_to user_path(user) do %>
-						<%= user.name %><% end %></td>
-				</tr>
-				<tr>
-					<th>自己紹介</th>
-				</tr>
-				<tr>
-					<td colspan="2"><%= user.introduction %></td>
-				</tr>
-			</tbody>
-		</table>
-	<% if current_user != user %>
-		<% if current_user.following?(user) %>
-		  <%= link_to 'フォロー外す', user_relationships_path(user.id), method: :delete ,class: "btn btn-primary btn-lg"%>
-		<% else %>
-		  <%= link_to 'フォローする', user_relationships_path(user.id), method: :POST ,class: "btn btn-success btn-lg"%>
+<div class="col-xs-3 user_profile">
+	<table class="table">
+		<%= render 'relationships/follow_btn', user: @user %>
+		<thead>
+			<tr><th>ユーザー情報</th></tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td colspan="2"><%= attachment_image_tag user, :image, :fill,200,200, format: 'jpeg', class: "profile-thumb", fallback: "no_image.jpg", size:'200x200' %>
+				</td>
+			</tr>
+			<tr>
+				<th>ニックネーム</th>
+			</tr>
+			<tr>
+				<td class="name" align="center"><%= link_to user_path(user) do %><strong>
+					<%= user.name %></strong><% end %></td>
+			</tr>
+			<tr>
+				<th>自己紹介</th>
+			</tr>
+			<tr>
+				<td colspan="2"><%= user.introduction %></td>
+			</tr>
+			<tr>
+		<% if current_page?(root_path) %>
+			<td class="home_btn"><%= link_to "いいねしたレシピ一覧", favorite_user_path(user),class: "btn btn-blue btn-block" %></td>
+			<td class="home_btn"><%= link_to "ユーザのレシピ一覧", recipe_indedx_user_path(user),class: "btn btn-blue btn-block" %></td>
+		<% elsif current_page?(controller: 'users', action: 'recipes') %>
+			<td class="home_btn"><%= link_to "いいねしたレシピ一覧", favorite_user_path(user),class: "btn btn-blue btn-block" %></td>
+		<% elsif current_page?(controller: 'favorites', action: 'favorite') %>
+			<td class="home_btn"><%= link_to "ユーザのレシピ一覧", recipe_indedx_user_path(user),class: "btn btn-blue btn-block" %></td>
 		<% end %>
-	<% end %>
+			</tr>
+		</tbody>
+	</table>
 </div>

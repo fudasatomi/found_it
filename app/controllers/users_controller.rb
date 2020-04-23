@@ -1,12 +1,20 @@
 class UsersController < ApplicationController
   def recipes
   	@user = User.find(params[:id])
-  	@recipes = Recipe.where(user_id: @user.id)
+    if @user == current_user
+    	@recipes = Recipe.where(user_id: @user.id)
+    else
+      @recipes = Recipe.where(user_id: @user.id,is_closed: false)
+    end
   end
 
   def show
   	@user = User.find(params[:id])
-  	@recipes = Recipe.where(user_id: @user.id)
+    if @user == current_user
+      @recipes = Recipe.where(user_id: @user.id)
+    else
+      @recipes = Recipe.where(user_id: @user.id, is_closed: false)
+    end
   end
 
   def edit
@@ -25,6 +33,13 @@ class UsersController < ApplicationController
   def leave
   	@user = current_user
   end
+
+  def destroy
+    @user = current_user
+    @user.destroy
+    redirect_to root_path
+  end
+
 
 	private
 	  def user_params
