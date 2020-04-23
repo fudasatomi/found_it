@@ -1,12 +1,20 @@
 class UsersController < ApplicationController
   def recipes
   	@user = User.find(params[:id])
-  	@recipes = Recipe.where(user_id: @user.id)
+    if @user == current_user
+    	@recipes = Recipe.where(user_id: @user.id)
+    else
+      @recipes = Recipe.where(user_id: @user.id,is_closed: false)
+    end
   end
 
   def show
   	@user = User.find(params[:id])
-  	@recipes = Recipe.where(user_id: @user.id)
+    if @user == current_user
+      @recipes = Recipe.where(user_id: @user.id)
+    else
+      @recipes = Recipe.where(user_id: @user.id, is_closed: false)
+    end
   end
 
   def edit

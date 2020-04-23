@@ -2,7 +2,7 @@
 	<% recipes.each do |recipe| %>
 		<div class="recipe_div">
 			<%= link_to (recipe) do %>
-			<%= attachment_image_tag recipe, :image, :fill, 180, 120,format: "jpeg" , fallback: "no_image.jpg" %><br>
+			<%= attachment_image_tag recipe, :image, :fill, 180, 120,format: "jpeg" , fallback: "no_image.jpg", size: "180x120" %><br>
 			<% end %>
 			<%= link_to recipe.title, recipe_path(recipe), class: "recipe_link" %>
 			<span class="glyphicon glyphicon-heart"></span>

@@ -19,7 +19,7 @@
 			  <tbody>
 			    <% @users.each do |user| %>
 			      <tr>
-			        <td><%= attachment_image_tag(user, :image, :fill, 50, 50, fallback: "no-image.jpg") %></td>
+			        <td><%= attachment_image_tag user, :image, :fill,50,50, format: 'jpeg', class: "profile-thumb", fallback: "no_image.jpg", size:'50x50' %></td>
 			        <td><%= user.name %></td>
 			        <td>フォロー数：<%= user.follower.count %></td>
 			        <td>フォロワー数：<%= user.followed.count %></td>
@@ -38,6 +38,8 @@
 			    <% end %>
 			  </tbody>
 			</table>
+
+			<%= link_to '戻る', 'javascript:history.back()',class: "btn btn-primary btn-sm" %>
 		</div>
 	</div>
 </div>

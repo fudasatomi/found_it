@@ -14,7 +14,11 @@ class FavoritesController < ApplicationController
 
   def favorite
     @user = User.find(params[:id])
-    @recipes = @user.favorite_recipes.includes(:user)
+    if @user == current_user
+      @recipes = @user.favorite_recipes.includes(:user)
+    else
+      @recipes = @user.favorite_recipes.includes(:user).where(is_closed: false)
+    end
   end
 
 end
