@@ -1,16 +1,34 @@
 <div class="conteiner">
 	<div class="row">
-		<div class="col-xs-10 col-xs-offset-1">
+		<div class="col-xs-11 col-xs-offset-1">
 			<%= render 'recipes/category', categories: @category_list %>
 			<div class="col-xs-9">
-				<div class="row">
-					<h3>いいね数ランキング</h3>
-					<%= render 'recipes/recipes_index', recipes: @favorite_rank %>
-				</div>
-				<div class="row">
-					<h3>新しい投稿レシピ</h3>
-					<%= render 'recipes/recipes_index', recipes: @new_recipe %>
-				</div>
+				<article class="fovo_rank">
+					<div class="row favo_rank_contents">
+						<h3>いいね数ランキング</h3>
+						<div class="favo_rank_recipes">
+							<% @favorite_rank.each.with_index(1) do |recipe, idx| %>
+								<div class="favo_recipe_div">
+									<p><%= idx %></p>
+									<%= link_to recipe do %>
+									<%= attachment_image_tag recipe, :image, :fill, 180, 120,format: "jpeg" , fallback: "no_image.jpg", size: "180x120" %><br>
+									<%= recipe.title %>
+									<p class="favo_heart"><span class="glyphicon glyphicon-heart"></span>
+									<%= recipe.favorites.count %></p>
+									<% end %>
+								</div>
+							<% end %>
+						</div>
+					</div>
+				</article>
+				<article  class="update_recipe_rank">
+					<div class="row update_recipe_contents">
+						<h3>
+							新しい投稿レシピ</h3>
+						<p><%= link_to "＞＞もっと見る", recipes_path %></p>
+						<%= render 'recipes/recipes_index', recipes: @new_recipe %>
+					</div>
+				</article>
 			</div>
 
 			<%# if user_signed_in? %>

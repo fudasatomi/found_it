@@ -1,3 +1,15 @@
 // Place all the styles related to the favorites controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.favo_btn{
+	font-size: 2.5em;
+	.glyphicon-heart{
+		color: #fa8072;
+	}
+}
+.unfavo_btn{
+	font-size: 2.5em;
+	.glyphicon-heart-empty{
+		color: #fa8072;
+	}
+}

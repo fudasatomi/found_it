@@ -23,20 +23,147 @@
 		text-align: center;
 	}
 }
-
-// レシピ一覧
-.recipe_index{
+// 検索テーブル
+.search_table{
+		margin-top: 20px;
+		border:0.5px solid #747474;
+		border-radius: 5px;
+		border-collapse: separate;
+  		border-spacing: 0;
+  		h2{
+  			margin: 20px;
+  			color: #747474;
+  			border-bottom: solid 3px #04949c;
+  		}
+		th{
+			color: #747474;
+			font-size: 1.1em;
+			border-top: 0px !important;
+		  	border-bottom: 0px !important;
+		}
+		td{
+			border-top: 0px !important;
+		  	border-bottom: 0px !important;
+		}
 
 }
+
+// レシピ一覧
+.recipes_index{
+		margin-top: 20px;
+		width: 90%;
+		border:0.5px solid #747474;
+		border-radius: 5px;
+		border-collapse: separate;
+  		border-spacing: 0;
+  		h2{
+  			color: #747474;
+  			border-bottom: solid 3px #04949c;
+  		}
+  		.recipes_index_contents{
+  			margin: 0 20px;
+  		}
+}
 .recipe_div{
-	margin: 10px;
+	margin: 20px;
 	float: left;
 }
 .recipe_image_div{
 	margin-top: 25px;
 	text-align: center;
 }
+
+// _recipe_index 部分テンプレート
 .recipe_title{
 	color: #747474;
 	font-weight: bold;
+}
+.favo_heart{
+	float: right;
+	color: #04949c;
+}
+
+// レシピ詳細
+
+.show-favo-btn{
+	margin-right: 80px;
+	float: right;
+}
+
+.recipe_show{
+	margin-top: 20px;
+	width: 90%;
+	border:0.5px solid #747474;
+	border-radius: 5px;
+	border-collapse: separate;
+	border-spacing: 0;
+
+	.recipe_show_margin{
+		margin: 0 20px;
+		h2{
+	  		color: #747474;
+	  		border-bottom: solid 3px #04949c;
+		  	p{
+		  		font-size:0.5em;
+		  	}
+	  		}
+		h3{
+	  		color: #000000;
+	  		padding-top: 5px;
+	  		border-top: solid 1px #04949c;
+	  		border-bottom: solid 1px #04949c;
+	  		}
+	  	.outline{
+	  		margin-top: 30px;
+	  		font-size: 1.6em;
+	  	}
+	  	.post_user{
+	  		float: right;
+	  	}
+	  	.current_user_btn{
+	  		float: right;
+	  	}
+
+	}
+	.recipe_show_image{
+		text-align: center;
+		margin: 30px 0;
+	}
+}
+.material_table{
+		th{
+			border-top: 0px !important;
+		  	border-bottom: 0px !important;
+		}
+		td{
+			border-top: 0px !important;
+		  	border-bottom: 0px !important;
+		}
+}
+.procedure_table{
+		th{
+			border-top: 0px !important;
+		  	border-bottom: 0px !important;
+		}
+		td{
+			border-top: 0px !important;
+		  	border-bottom: 0px !important;
+		}
+}
+.comment_show{
+	margin: 20px 0;
+	width: 90%;
+	border:0.5px solid #747474;
+	border-radius: 5px;
+	border-collapse: separate;
+	border-spacing: 0;
+
+	.recipe_comment_margin{
+		margin: 0 20px;
+		h3{
+	  		color: #747474;
+	  		border-bottom: solid 1.5px #04949c;
+	  	}
+
+  	}
 }
