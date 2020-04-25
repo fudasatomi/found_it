@@ -5,3 +5,52 @@
 .home_btn{
 	margin-top: 20px;
 }
+
+.fovo_rank{
+		margin-top: 20px;
+		width: 100%;
+		border:0.5px solid #747474;
+		border-radius: 5px;
+		border-collapse: separate;
+  		border-spacing: 0;
+  		h3{
+  			color: #747474;
+  			border-bottom: solid 3px #04949c;
+  		}
+  		p{
+  			font-size: 1.1em;
+  			vertical-align: top;
+  		}
+	.favo_rank_contents{
+		margin: 0 20px;
+  		.favo_recipe_div{
+  			margin: 10px 20px;
+			float: left;
+  		}
+  		.favo_heart{
+  			float: right;
+  		}
+  		.glyphicon-heart{
+  			align: right;
+  			color: #04949c;
+  		}
+  	}
+}
+.update_recipe_rank{
+		margin-top: 30px;
+		width: 100%;
+		border:0.5px solid #747474;
+		border-radius: 5px;
+		border-collapse: separate;
+  		border-spacing: 0;
+  	  		h3{
+  	  		border-bottom: solid 3px #04949c;
+  			color: #747474;
+  		}
+  			p{
+  				text-align: right;
+  			}
+  		.update_recipe_contents{
+  			margin: 0 20px;
+  		}
+}

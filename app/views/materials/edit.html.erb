@@ -1,6 +1,6 @@
-<div class="conteiner">
-	<div class="row">
-		<div class="col-xs-8 col-xs-offset-2">
+<div class="col-xs-10 col-xs-offset-1">
+	<div class="row material_new">
+		<div class="material_new_margin">
 			<h2>材料変更</h2>
 			<%= form_for [@recipe, @material] do |f| %>
 			<table class="table">
@@ -15,21 +15,21 @@
 				</thead>
 				<tbody>
 				    <tr>
-				    	<td><%= attachment_image_tag @material, :image, fallback: "no_image.jpg", size:'200x150', id: "file-preview" %>
+				    	<td><%= attachment_image_tag @material, :image,:fill,200,150, fallback: "no_image.jpg", size:'200x150', id: "file-preview" %>
 						<%= f.attachment_field :image, class: "btn  item_attachment_field", id: "image_select"%>
-						<label for="image_select" class="btn btn-primary item_attachment_field" style="display: block;">画像選択</label></td>
+						<label for="image_select" class="btn btn-blue item_attachment_field" style="display: block;">画像選択</label></td>
 				        <td><%= f.text_field :name, class: 'form-control' %></td>
 				        <td><%= f.text_field :quantity, class: 'form-control' %></td>
 				        <td><%= f.text_field :maker, class: 'form-control' %></td>
 				    </tr>
 				</tbody>
 			</table>
-        		<div>
-        			<%= f.submit "材料を変更" ,class: "btn btn-lg" %>
-        		</div>
-	        <% end %>
 		</div>
 	</div>
+	<div align="center">
+		<%= f.submit "材料を変更" ,class: "btn btn-blue btn-lg" %>
+		</div>
+    <% end %>
 </div>
 <!-- 画像選択した際に、選択した画像を表示させるjavascript -->
 <script>

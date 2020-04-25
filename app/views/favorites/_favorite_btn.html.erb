@@ -1,15 +1,21 @@
 <% if user_signed_in? %>
 	<% if recipe.favorited_by?(current_user) %>
-		<%= link_to	recipe_favorites_path(recipe), method: :delete,remote: true do %>
-			<span class="glyphicon glyphicon-heart"></span>
-		<% end %>
-		<%= recipe.favorites.count %>
+		<div class="favo_btn">
+			<%= link_to	recipe_favorites_path(recipe), method: :delete,remote: true do %>
+				<span class="glyphicon glyphicon-heart"></span>
+			<% end %>
+			<%= recipe.favorites.count %>
+		</div>
 	<% else %>
-		<%= link_to recipe_favorites_path(recipe), method: :post, remote: true do %>
-			<span class="glyphicon glyphicon-heart-empty"></span>
-		<% end %>
-		<%= recipe.favorites.count %>
+		<div class="unfavo_btn">
+			<%= link_to recipe_favorites_path(recipe), method: :post, remote: true do %>
+				<span class="glyphicon glyphicon-heart-empty"></span>
+			<% end %>
+			<%= recipe.favorites.count %>
+		</div>
 	<% end %>
 <% else %>
-	<span class="glyphicon glyphicon-heart-empty"></span><%= recipe.favorites.count %>
+	<div class="unfavo_btn">
+		<span class="glyphicon glyphicon-heart-empty"></span><%= recipe.favorites.count %>
+	</div>
 <% end %>

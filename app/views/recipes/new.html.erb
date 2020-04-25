@@ -1,43 +1,44 @@
-<div class="conteiner">
-	<div class="row">
-		<div class="col-xs-8 col-xs-offset-2">
-			<!-- エラーメッセージ -->
-			<% if @recipe.errors.any? %>
-			    <div id="error_explanation" class="alert alert-danger">
-			    	<ul>
-				        <% @recipe.errors.full_messages.each do |message| %>
-				            <li><%= message %></li>
-				        <% end %>
-			    	</ul>
-			    </div>
-			<% end %>
-			<!-- エラーメッセージ -->
+<div class="row">
+	<div class="col-xs-10 col-xs-offset-1">
+		<h4>STEP：1　レシピのタイトルと概要を作成してください。</h4>
+		<!-- エラーメッセージ -->
+		<% if @recipe.errors.any? %>
+			<div id="error_explanation" class="alert alert-danger">
+				<ul>
+				  <% @recipe.errors.full_messages.each do |message| %>
+				    <li><%= message %></li>
+				  <% end %>
+				</ul>
+			</div>
+		<% end %>
+		<!-- エラーメッセージ -->
+		<div class="recipe_new">
 			<%= form_for(@recipe) do |f| %>
-			<div class="row">
+			<div class="row recipe_new_margin">
 				<div class="col-xs-5">
-					<h3 class="recipe_title">画像</h3>
-						<div class="recipe_image_div">
-							<%= attachment_image_tag @recipe, :image,:fill,fallback: "no_image.jpg", size:'300x200', id: "file-preview" %>
+					<h3>画像</h3>
+						<div class="recipe_new_image">
+							<%= attachment_image_tag @recipe, :image,:fill, 300,200,fallback: "no_image.jpg", size:'300x200', id: "file-preview" %>
 							<%= f.attachment_field :image, class: "btn btn-blue achment_field", id: "image_select"%>
 							<label for="image_select" class="btn btn-blue item_attachment_field" style="display: block;">画像選択</label>
 						</div>
 				</div>
 				<div class="col-xs-7">
-					<h3 class="recipe_title">レシピタイトル</h3>
-					<%= f.text_field :title, placeholder: "タイトル", class: "form-control" %>
-					<h3 class="recipe_title">カテゴリー</h3>
-					 <%= f.grouped_collection_select(:category_id, ParentCategory.all, :category, :name, :id, :name,{include_blank: '選択してください'},class: 'form-control' )%>
-					<h3 class="recipe_title">概要</h3>
-						<%= f.text_area :outline, placeholder: "レシピの紹介文", rows:'5', class: "form-control" %>
+					<h3>レシピタイトル</h3>
+					<%= f.text_field :title, placeholder: "タイトル(必須)", class: "form-control" %>
+					<h3>カテゴリー</h3>
+					 <%= f.grouped_collection_select(:category_id, ParentCategory.all, :category, :name, :id, :name,{include_blank: '選択してください(必須)'},class: 'form-control' )%>
+					<h3>概要</h3>
+						<%= f.text_area :outline, placeholder: "レシピの紹介文(必須)", rows:'5', class: "form-control" %>
 						<%= f.hidden_field :is_closed, :value => true %>
 				</div>
-				<div class="action">
-					<%= f.submit "レシピを作成する" ,class: "btn btn-blue btn-lg" %>
-					<p>※この段階では非公開です</p>
-				</div>
 			</div>
-			<% end %>
 		</div>
+		<div class="row new_btn" align="center">
+			<span><%= f.submit "STEP：２　材料の登録へ進む" ,class: "btn btn-blue btn-lg" %></span>
+			<p>※この段階では非公開です</p>
+		</div>
+			<% end %>
 	</div>
 </div>
 

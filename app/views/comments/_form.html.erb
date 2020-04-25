@@ -1,11 +1,11 @@
-<table class="table">
+<table class="table comment_table">
 	<tr>
 		<th>投稿</th>
 		<%= form_for [recipe, comment], url: recipe_comments_path(recipe.id), remote: true do |f| %>
-		<td class="col-xs-8">
+		<td class="col-xs-9">
 			<%= f.text_area :comment, rows:'2', class: "form-control",placeholder: "コメントをここに" %>
 		</td>
-		<td><%= f.submit "送信する", class: "btn btn-primary" %>
+		<td><%= f.submit "送信する", class: "btn btn-blue btn-lg" %>
 		</td>
 		<% end %>
 	</tr>

@@ -50,6 +50,7 @@ header{
 	height: 60px;
 	width: auto;
 }
+// headerの新規登録ボタン
 .btn-circle {
 	margin-left: 35px;
 	width: 48px;
@@ -85,13 +86,38 @@ footer {
 	}
 
 }
-
+// devise関係
+.devise-form{
+	padding: 20px 20px 0 20px;
+	border:0.5px solid #747474;
+	border-radius: 5px;
+	border-collapse: separate;
+  	border-spacing: 0;
+}
+.devise-title{
+	margin-top: 20px;
+	font-size: 2em;
+	text-align: center;
+	color: #04949c;
+}
+.devise-table{
+		th{
+			color: #747474;
+			font-size: 1.1em;
+			border-top: 0px !important;
+		  	border-bottom: 0px !important;
+		}
+		td{
+			border-top: 0px !important;
+		  	border-bottom: 0px !important;
+		}
+}
 
 
 // refile_image
 #material-image{
-	width: 100px;
-	height: 80px;
+	width: 80px;
+	height: 70px;
 }
 #procedure-image{
 	width: 100px;
@@ -135,6 +161,37 @@ footer {
   border-color: #036166;
 }
 // ↑ボタンの色 btn-blue　へ
+
+// ↓ボタンの色　btn-red
+.btn-red,
+.btn-red.disabled, .btn-red:disabled {
+  color: #ffffff;
+  background-color: #9c0549;
+  border-color: #9c0549;
+}
+
+/* focusされた時の枠線の色 */
+.btn-red:focus, .btn-red.focus,
+.btn-red:not(:disabled):not(.disabled):active:focus, .btn-red:not(:disabled):not(.disabled).active:focus,
+.show > .btn-red.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(189, 183, 107,0.5)
+}
+
+/* hover時（マウスカーソルを重ねた時）の色（通常より濃いor暗めの色を指定） */
+.btn-red:hover {
+  color: #ffffff;
+  background-color: #e6076b;
+  border-color: #e6076b;
+}
+
+/* active時の色（hover時と同等かさらに濃いor暗めの色を指定） */
+.btn-red:not(:disabled):not(.disabled):active, .btn-red:not(:disabled):not(.disabled).active,
+.show > .btn-red.dropdown-toggle {
+  color: #ffffff;
+  background-color: #e6076b;
+  border-color: #e6076b;
+}
+// ↑ボタンの色 btn-red　へ
 
 // #036166(文字　濃青緑)
 // #04949c　(青緑)

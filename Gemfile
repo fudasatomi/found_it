@@ -68,6 +68,9 @@ gem 'refile-mini_magick'
 gem 'kaminari','~> 1.1.1'
 gem 'rubocop', require: false
 gem 'ransack'
+gem 'rails-i18n'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'

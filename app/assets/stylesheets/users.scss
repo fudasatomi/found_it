@@ -3,31 +3,41 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .user_profile{
-	margin-top: 30px;
-	table{
+		margin: 20px;
 		border:0.5px solid #747474;
 		border-radius: 5px;
 		border-collapse: separate;
   		border-spacing: 0;
-	}
-	thead{
-		th{
-		font-size: 1.2em;
-		color: #fff;
-		background-color: #747474;
-		border-radius: 5px;
-		text-align: center;
+  	table{
+  		margin: 0px;
+		thead{
+			th{
+			font-size: 1.2em;
+			color: #fff;
+			background-color: #747474;
+			border-radius: 5px;
+			text-align: center;
+			}
+		}
+		tbody{
+			th{
+			font-size: 1.1em;
+			color: #04949c;
+			text-align: center;
+			}
+			.name{
+			color: #000000;
+			}
 		}
 	}
-	tbody{
-		th{
-		font-size: 1.1em;
-		color: #04949c;
-		text-align: center;
-		}
-		.name{
-		color: #000000;
-		}
+	.user_profile_margin{
+		margin: 0 20px;
+		h3{
+	  		color: #747474;
+	  		border-bottom: solid 3px #04949c;
+	  		}
 	}
-
+}
+.user_edit_btn{
+	margin-bottom: 20px;
 }

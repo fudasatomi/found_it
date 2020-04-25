@@ -29,8 +29,9 @@ class ProceduresController < ApplicationController
 
   def update
     @procedure = Procedure.find(params[:id])
+    @recipe = Recipe.find(params[:recipe_id])
     if @procedure.update(procedure_params)
-      redirect_to edit_recipe_path(@procedure.recipe_id)
+      redirect_to new_recipe_procedure_path(@recipe)
     else
       render :edit
     end
@@ -39,7 +40,7 @@ class ProceduresController < ApplicationController
   def destroy
     procedure = Procedure.find(params[:id])
     procedure.destroy
-    redirect_to new_recipe_procedure_path
+    redirect_to request.referer
   end
 
   private

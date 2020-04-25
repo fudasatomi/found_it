@@ -1,33 +1,36 @@
 <div class="conteiner">
 	<div class="row">
-		<div class="col-xs-10 col-xs-offset-1">
+		<div class="col-xs-11 col-xs-offset-1">
 			<%= render 'category', categories: @category_list %>
 			<div class="col-xs-8">
+				<article class="search_table">
 				<h2>レシピ　絞り込み検索</h2>
-				<%= search_form_for @q do |f| %>
-					<div class="form-group">
-					<!-- 　 検索対象のカラムを:hoge_contで示す。itemnameだったらitemname_cont -->
+					<%= search_form_for @q do |f| %>
+					<div class="form-group search_form">
+						<!-- 　 検索対象のカラムを:hoge_contで示す。itemnameだったらitemname_cont -->
 						<table class="table">
 							<tbody>
-							<tr>
-								<th class="col-xs-4"><%= f.label :category_id_eq, 'カテゴリー' %></th>
-								<td><%= f.grouped_collection_select(:category_id_eq, ParentCategory.all, :category, :name, :id, :name,{include_blank: '選択してください'},class: 'form-control' )%></td>
-							</tr>
-							<tr>
-								<th class="col-xs-4"><%= f.label :title_or_outline_cont, "タイトル・説明キーワード" %></th>
-								<td><%= f.search_field :title_or_outline_cont, placeholder: '検索ワードを入力', class: "form-control" %></td>
-							</tr>
-							<tr>
-								<th class="col-xs-4"><%= f.label :materials_name_cont, "材料キーワード" %></th>
-								<td><%= f.search_field :materials_name_cont, placeholder: '検索ワードを入力', class: "form-control" %></td>
-							</tr>
-							<tr>
-								<td align="center" colspan="2" ><%= f.submit "検索",class: "btn btn-primary btn-lg" %></td>
-							</tr>
-						</tbody>
-					</table>
-				<% end %>
-			</div>
+								<tr>
+									<th class="col-xs-4"><%= f.label :category_id_eq, 'カテゴリー' %></th>
+									<td><%= f.grouped_collection_select(:category_id_eq, ParentCategory.all, :category, :name, :id, :name,{include_blank: '選択してください'},class: 'form-control' )%></td>
+								</tr>
+								<tr>
+									<th class="col-xs-4"><%= f.label :title_or_outline_cont, "タイトル・説明キーワード" %></th>
+									<td><%= f.search_field :title_or_outline_cont, placeholder: '検索ワードを入力', class: "form-control" %></td>
+								</tr>
+								<tr>
+									<th class="col-xs-4"><%= f.label :materials_name_cont, "材料キーワード" %></th>
+									<td><%= f.search_field :materials_name_cont, placeholder: '検索ワードを入力', class: "form-control" %></td>
+								</tr>
+								<tr>
+									<td align="center" colspan="2" ><%= f.submit "検索",class: "btn btn-blue btn-lg" %></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<% end %>
+				</article>
+				<div align="right" colspan="2" ><%= link_to "レシピ一覧へ",recipes_path ,class: "btn btn-blue btn-lg" %>
 		</div>
 	</div>
 </div>

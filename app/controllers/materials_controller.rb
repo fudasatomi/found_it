@@ -29,8 +29,9 @@ class MaterialsController < ApplicationController
 
   def update
     @material = Material.find(params[:id])
+    @recipe = Recipe.find(params[:recipe_id])
     if @material.update(material_params)
-      redirect_to edit_recipe_path(@material.recipe_id)
+      redirect_to new_recipe_material_path(@recipe)
     else
       render :edit
     end
@@ -39,7 +40,7 @@ class MaterialsController < ApplicationController
   def destroy
   	material = Material.find(params[:id])
   	material.destroy
-  	redirect_to new_recipe_material_path
+  	redirect_to request.referer
   end
 
   private
