@@ -24,6 +24,9 @@
 					</h2>
 				</div>
 				<div class="row recipe_show_margin">
+					<p>
+						投稿時間：<%= @recipe.created_at.to_s(:datetime_jp) %>
+					</p>
 					<div class="col-xs-5 recipe_show_image">
 						<%= attachment_image_tag @recipe, :image, :fill, 250,200,format: "jpeg" , fallback: "no_image.jpg", size:'250x200' %>
 					</div>
