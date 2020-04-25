@@ -161,9 +161,9 @@
 
   	}
 }
-
+// レシピ新規登録・編集
 .recipe_new{
-	margin-top: 20px;
+	margin: 20px 0px;
 	padding-bottom: 30px;
 	width: 100%;
 	border:0.5px solid #747474;
@@ -181,11 +181,11 @@
 	  		}
 
 	}
-	.recipe_new_image{
-		text-align: center;
-		margin: 30px 0;
-	}
 }
 .new_btn{
 	margin-top: 30px;
+}
+.recipe_new_image{
+	text-align: center;
+	margin: 30px 0;
 }
