@@ -1,16 +1,16 @@
 <div class="container">
 	<div class="row">
-		<div class="col-xs-12">
+		<div class="col-xs-8 col-xs-offset-2">
 			<div class="leave-confirm-message">
-				<h2 class="user-title">本当に退会しますか？</h2>
-				<h3 class="user-title">退会すると、これまでに投稿したレシピが削除されます。<br>また、いいねをしたレシピの一覧もできなくなります。<br>退会する場合は、「退会する」をクリックしてください。</h3>
+				<h2 align="center">本当に退会しますか？</h2>
+				<h3 align="center">退会すると、これまでに投稿したレシピが削除されます。<br>また、いいねをしたレシピの一覧もできなくなります。<br>退会する場合は、「退会する」をクリックしてください。</h3>
 
 				<div class="col-xs-6 col-xs-offset-3 leave-btn">
 					<div class="col-xs-6">
-						<%= link_to '退会しない',user_path(current_user), class: "btn btn-lg btn-success" %>
+						<%= link_to '退会しない',user_path(current_user), class: "btn btn-lg btn-blue" %>
 					</div>
 					<div class="col-xs-6">
-						<%= link_to '退会する', user_registration_path,method: :delete, class: "btn btn-lg btn-danger" %>
+						<%= link_to '退会する', user_registration_path,method: :delete, class: "btn btn-lg btn-red" %>
 					</div>
 				</div>
 			</div>
