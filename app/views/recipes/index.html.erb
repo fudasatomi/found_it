@@ -1,15 +1,14 @@
-<div class="conteiner">
-	<div class="row">
-		<div class="col-xs-11 col-xs-offset-1">
-			<%= render 'category', categories: @category_list %>
-			<div class="col-xs-9">
-				<article class="recipes_index">
-					<div class="row recipes_index_contents">
-					<h2>レシピ一覧</h2>
-						<%= render 'recipes_index', recipes: @recipes %>
-					</div>
-				</article>
-			</div>
+<div class="row">
+	<div class="col-xs-11 col-xs-offset-1">
+		<%= render 'category', categories: @category_list %>
+		<div class="col-xs-9">
+			<article class="recipes_index">
+				<div class="row recipes_index_contents">
+				<h2>レシピ一覧</h2>
+					<%= render 'recipes_index', recipes: @recipes %>
+				</div>
+			</article>
 		</div>
 	</div>
 </div>
+

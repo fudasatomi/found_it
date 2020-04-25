@@ -1,79 +1,78 @@
-<div class="conteiner">
-	<div class="row">
-		<div class="col-xs-11 col-xs-offset-1">
-			<%= render 'category', categories: @category_list %>
-			<div class="col-xs-9">
-				<div class="row">
-					カテゴリー：<%= link_to @parent_category.name, category_all_index_recipe_path(@parent_category) %>
-						 ＞ <%= link_to @category.name, category_index_recipe_path(@category) %>
-					<div id="favorite_buttons_<%= @recipe.id %>" class="show-favo-btn">
-						<%= render partial: 'favorites/favorite_btn', locals: { recipe: @recipe} %>
-					</div>
-				</div>
-				<div class="recipe_show">
-					<div class="recipe_show_margin">
-						<h2>
-							<%= @recipe.title %>
-							<span class="post_user">
-								<p>
-								投稿者：<%= link_to @recipe.user.name, user_path(@recipe.user.id)%>
-								<% if @recipe.user == current_user %>
-									<%= link_to "編集する", edit_recipe_path(@recipe),class: "btn btn-blue btn-sm" %>
-								<%= @recipe.if_is_closed %>
-							<% end %></p>
-							</span>
-						</h2>
-					</div>
-					<div class="row recipe_show_margin">
-						<div class="col-xs-5 recipe_show_image">
-							<%= attachment_image_tag @recipe, :image, :fill, 250,200,format: "jpeg" , fallback: "no_image.jpg", size:'250x200' %>
-						</div>
-						<div class="col-xs-7">
-							<div class="outline"><%= @recipe.outline %></div>
-
-							<h3>レシピ材料</h3>
-							<table class="table material_table">
-								<% @materials.each do |material| %>
-								<tbody>
-									<tr>
-										<td><%= attachment_image_tag material, :image, format: "jpeg" , fallback: "no_image.jpg", id: "material-image"  %></td>
-										<td><%= material.name %></td>
-										<td><%= material.quantity %></td>
-										<td><%= material.maker %></td>
-									</tr>
-								</tbody>
-								<% end %>
-							</table>
-						</div>
-					</div>
-				<div class="row recipe_show_margin">
-					<h3>レシピ手順</h3>
-					<table class="table procedure_table">
-						<% @procedures.each.with_index(1) do |procedure, idx| %>
-						<tbody>
-							<tr>
-								<td><%= idx %></td>
-								<td><%= attachment_image_tag procedure, :image, format: "jpeg" , fallback: "no_image.jpg", id: "procedure-image" %></td>
-								<td><%= procedure.explanation %></td>
-							</tr>
-						</tbody>
-						<% end %>
-					</table>
+<div class="row">
+	<div class="col-xs-12">
+		<%= render 'category', categories: @category_list %>
+		<div class="col-xs-9">
+			<div class="row">
+				カテゴリー：<%= link_to @parent_category.name, category_all_index_recipe_path(@parent_category) %>
+					 ＞ <%= link_to @category.name, category_index_recipe_path(@category) %>
+				<div id="favorite_buttons_<%= @recipe.id %>" align="right">
+					<%= render partial: 'favorites/favorite_btn', locals: { recipe: @recipe} %>
 				</div>
 			</div>
-			<div class="conteiner comment_show">
-				<div class="row recipe_comment_margin">
-					<div class="comment">
-						<h3>コメント</h3>
-						<div id="comments_area">
-							<%= render partial:'comments/comment_index',locals: { comments: @comments, recipe: @recipe} %>
-							<% if user_signed_in? %>
-								<%= render partial: 'comments/form', locals: { comment: @comment, recipe: @recipe } %>
+			<div class="recipe_show">
+				<div class="recipe_show_margin">
+					<h2>
+						<%= @recipe.title %>
+						<span class="post_user">
+							<p>
+							投稿者：<%= link_to @recipe.user.name, user_path(@recipe.user.id)%>
+							<% if @recipe.user == current_user %>
+								<%= link_to "編集する", edit_recipe_path(@recipe),class: "btn btn-blue btn-sm" %>
+							<%= @recipe.if_is_closed %>
+						<% end %></p>
+						</span>
+					</h2>
+				</div>
+				<div class="row recipe_show_margin">
+					<div class="col-xs-5 recipe_show_image">
+						<%= attachment_image_tag @recipe, :image, :fill, 250,200,format: "jpeg" , fallback: "no_image.jpg", size:'250x200' %>
+					</div>
+					<div class="col-xs-7">
+						<div class="outline"><%= @recipe.outline %></div>
+
+						<h3>レシピ材料</h3>
+						<table class="table material_table">
+							<% @materials.each do |material| %>
+							<tbody>
+								<tr>
+									<td><%= attachment_image_tag material, :image, format: "jpeg" , fallback: "no_image.jpg", id: "material-image"  %></td>
+									<td><%= material.name %></td>
+									<td><%= material.quantity %></td>
+									<td><%= material.maker %></td>
+								</tr>
+							</tbody>
 							<% end %>
-						</div>
+						</table>
+					</div>
+				</div>
+			<div class="row recipe_show_margin">
+				<h3>レシピ手順</h3>
+				<table class="table procedure_table">
+					<% @procedures.each.with_index(1) do |procedure, idx| %>
+					<tbody>
+						<tr>
+							<td><%= idx %></td>
+							<td class="col-xs-2" align="center"><%= attachment_image_tag procedure, :image, format: "jpeg" , fallback: "no_image.jpg", id: "procedure-image" %></td>
+							<td class="col-xs-10"><%= procedure.explanation %></td>
+						</tr>
+					</tbody>
+					<% end %>
+				</table>
+			</div>
+		</div>
+		<div class="conteiner comment_show">
+			<div class="row recipe_comment_margin">
+				<div class="comment">
+					<h3>コメント</h3>
+					<div id="comments_area">
+						<%= render partial:'comments/comment_index',locals: { comments: @comments, recipe: @recipe} %>
+						<% if user_signed_in? %>
+							<%= render partial: 'comments/form', locals: { comment: @comment, recipe: @recipe } %>
+						<% end %>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
 </div>
