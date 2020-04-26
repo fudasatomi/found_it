@@ -1,5 +1,5 @@
 <div class="recipe_index">
-	<% if @recipes.present? %>
+	<% if recipes.present? %>
 		<% recipes.each do |recipe| %>
 			<div class="recipe_div">
 				<%= link_to recipe_path(recipe) do %>
@@ -15,6 +15,7 @@
 				</p>
 			</div>
 		<% end %>
+		<%= paginate recipes, class: "paginate" %>
 	<% else %>
 		<div class="recipe_no_message" align="center">投稿レシピはありません</div>
 	<% end %>

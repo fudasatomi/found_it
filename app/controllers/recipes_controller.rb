@@ -25,17 +25,17 @@ class RecipesController < ApplicationController
   end
 
   def index
-    @recipes = @q.result(distinct: true)
+    @recipes = @q.result(distinct: true).page(params[:page]).reverse_order
   end
 
   def category_all_index
     @parent_category = ParentCategory.find(params[:id])
-    @recipes = @parent_category.recipes.where(is_closed: false)
+    @recipes = @parent_category.recipes.where(is_closed: false).page(params[:page]).reverse_order
   end
 
   def category_index
     @category = Category.find(params[:id])
-    @recipes = @category.recipes.where(is_closed: false)
+    @recipes = @category.recipes.where(is_closed: false).page(params[:page]).reverse_order
   end
 
   def show

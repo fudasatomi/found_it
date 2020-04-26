@@ -16,8 +16,8 @@ class Recipe < ApplicationRecord
 
 	attachment :image
 
-	validates :title, presence: true
-	validates :outline, presence: true
+	validates :title, presence: true, length: {maximum: 12, minimum: 2}
+	validates :outline, presence: true, length: {maximum: 150, minimum: 5}
 	validates :category_id, presence: true
 
   	def self.ransackable_attributes(auth_object = nil)
