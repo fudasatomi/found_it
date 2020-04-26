@@ -15,9 +15,9 @@ class FavoritesController < ApplicationController
   def favorite
     @user = User.find(params[:id])
     if @user == current_user
-      @recipes = @user.favorite_recipes.includes(:user)
+      @recipes = @user.favorite_recipes.includes(:user).page(params[:page]).reverse_order
     else
-      @recipes = @user.favorite_recipes.includes(:user).where(is_closed: false)
+      @recipes = @user.favorite_recipes.includes(:user).where(is_closed: false).page(params[:page]).reverse_order
     end
   end
 
