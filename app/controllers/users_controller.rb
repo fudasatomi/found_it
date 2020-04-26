@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!,except:[:recipes,:show]
   def recipes
   	@user = User.find(params[:id])
     if @user == current_user

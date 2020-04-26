@@ -17,7 +17,7 @@
 							<p>
 							投稿者：<%= link_to @recipe.user.name, user_path(@recipe.user.id)%>
 							<% if @recipe.user == current_user %>
-								<%= link_to "編集する", edit_recipe_path(@recipe),class: "btn btn-blue btn-sm" %>
+								<%= link_to "編集する", edit_recipe_path(@recipe),class: "btn btn-red btn-sm" %>
 							<%= @recipe.if_is_closed %>
 						<% end %></p>
 						</span>
@@ -28,7 +28,7 @@
 						投稿時間：<%= @recipe.created_at.to_s(:datetime_jp) %>
 					</p>
 					<div class="col-xs-5 recipe_show_image">
-						<%= attachment_image_tag @recipe, :image, :fill, 250,200,format: "jpeg" , fallback: "no_image.jpg", size:'250x200' %>
+						<%= attachment_image_tag @recipe, :image, :fill, 300,200,format: "jpeg" , fallback: "no_image.jpg", size:'300x200' %>
 					</div>
 					<div class="col-xs-7">
 						<div class="outline"><%= @recipe.outline %></div>

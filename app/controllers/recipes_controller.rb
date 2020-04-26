@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-
+  before_action :authenticate_user!,except:[:search,:index,:category_all_index,:category_index,:show]
   before_action :category_list, only: [:search, :index, :category_all_index,:category_index, :show]
   before_action :set_recipe, only: [:show, :edit, :update]
 
@@ -56,6 +56,8 @@ class RecipesController < ApplicationController
     if @recipe.update(recipe_params)
       redirect_to recipe_path(@recipe)
     else
+      @materials = @recipe.materials
+      @procedures = @recipe.procedures
       render :edit
     end
   end

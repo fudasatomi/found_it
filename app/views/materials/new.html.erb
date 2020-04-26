@@ -33,7 +33,7 @@
 						<tbody>
 							<% @materials.each do |material| %>
 							<tr>
-								<td><%= attachment_image_tag material, :image, format: "jpeg" , fallback: "no_image.jpg", id: "material-image" %></td>
+								<td align="center"><%= attachment_image_tag material, :image, format: "jpeg" , fallback: "no_image.jpg", id: "material-image" %></td>
 								<td><%= material.name %></td>
 								<td><%= material.quantity %></td>
 								<td><%= material.maker %></td>
@@ -42,19 +42,11 @@
 							</tr>
 							<% end %>
 							<!-- エラーメッセージ -->
-							<% if @material.errors.any? %>
-							    <div id="error_explanation" class="alert alert-danger">
-							    	<ul>
-								        <% @material.errors.full_messages.each do |message| %>
-								            <li><%= message %></li>
-								        <% end %>
-							    	</ul>
-							    </div>
-							<% end %>
+							<%= render 'layouts/error', array: @material %>
 							<!-- エラーメッセージ -->
 							<%= form_for [@recipe, @material] do |f| %>
 							<tr>
-						    	<td><%= attachment_image_tag @material, :image, :fill, 80,70, format: "jpeg" , fallback: "no_image.jpg", size:'80x70', id: "file-preview"%>
+						    	<td align="center"><%= attachment_image_tag @material, :image, :fill, 80,70, format: "jpeg" , fallback: "no_image.jpg", size:'80x70', id: "file-preview"%>
 								<%= f.attachment_field :image, class: "btn  item_attachment_field", id: "image_select"%>
 								<label for="image_select" class="btn btn-red item_attachment_field" style="display: block;">画像</label></td>
 						        <td><%= f.text_field :name, class: 'form-control' %></td>
@@ -72,8 +64,10 @@
 						<tbody>
 							<tr>
 								<td><%= idx %></td>
-								<td><%= attachment_image_tag procedure, :image, format: "jpeg" , fallback: "no_image.jpg", id: "procedure-image" %></td>
+								<td align="center"><%= attachment_image_tag procedure, :image, format: "jpeg" , fallback: "no_image.jpg", id: "procedure-image" %></td>
 								<td><%= procedure.explanation %></td>
+								<td><%= link_to '編集' ,edit_recipe_procedure_path(@recipe.id, procedure) %></td>
+								<td><%= link_to '削除', recipe_procedure_path(@recipe.id, procedure),method: :delete, data: {confirm: "削除してよろしいですか？"} %></td>
 							</tr>
 						</tbody>
 						<% end %>
