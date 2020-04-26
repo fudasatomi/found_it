@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-
+  before_action :authenticate_user!,except:[:search,:index,:category_all_index,:category_index,:show]
   before_action :category_list, only: [:search, :index, :category_all_index,:category_index, :show]
   before_action :set_recipe, only: [:show, :edit, :update]
 
@@ -25,17 +25,17 @@ class RecipesController < ApplicationController
   end
 
   def index
-    @recipes = @q.result(distinct: true)
+    @recipes = @q.result(distinct: true).page(params[:page]).reverse_order
   end
 
   def category_all_index
     @parent_category = ParentCategory.find(params[:id])
-    @recipes = @parent_category.recipes.where(is_closed: false)
+    @recipes = @parent_category.recipes.where(is_closed: false).page(params[:page]).reverse_order
   end
 
   def category_index
     @category = Category.find(params[:id])
-    @recipes = @category.recipes.where(is_closed: false)
+    @recipes = @category.recipes.where(is_closed: false).page(params[:page]).reverse_order
   end
 
   def show
@@ -56,6 +56,8 @@ class RecipesController < ApplicationController
     if @recipe.update(recipe_params)
       redirect_to recipe_path(@recipe)
     else
+      @materials = @recipe.materials
+      @procedures = @recipe.procedures
       render :edit
     end
   end

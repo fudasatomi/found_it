@@ -51,15 +51,7 @@
 			<div class="row procedure_new_margin">
 				<h2 class="step_title">レシピ手順</h2>
 				<!-- エラーメッセージ -->
-				<% if @procedure.errors.any? %>
-				    <div id="error_explanation" class="alert alert-danger">
-				    	<ul>
-					        <% @procedure.errors.full_messages.each do |message| %>
-					            <li><%= message %></li>
-					        <% end %>
-				    	</ul>
-				    </div>
-				<% end %>
+				<%= render 'layouts/error', array: @procedure %>
 				<!-- エラーメッセージ -->
 				<table class="table step_table">
 					<thead>

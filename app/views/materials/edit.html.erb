@@ -1,8 +1,11 @@
 <div class="col-xs-10 col-xs-offset-1">
+	<%= form_for [@recipe, @material] do |f| %>
 	<div class="row material_new">
 		<div class="material_new_margin">
 			<h2>材料変更</h2>
-			<%= form_for [@recipe, @material] do |f| %>
+			<!-- エラーメッセージ -->
+			<%= render 'layouts/error', array: @material %>
+			<!-- エラーメッセージ -->
 			<table class="table">
 				<thead>
 					<tr>

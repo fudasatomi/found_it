@@ -1,17 +1,22 @@
 <div class="recipe_index">
-	<% recipes.each do |recipe| %>
-		<div class="recipe_div">
-			<%= link_to recipe_path(recipe) do %>
-				<%= attachment_image_tag recipe, :image, :fill, 180, 120,format: "jpeg" , fallback: "no_image.jpg", size: "180x120" %><br>
-				<%= recipe.title %>			<% end %>
-			<p class="favo_heart">
-				<span class="glyphicon glyphicon-heart"></span>
-				<%= recipe.favorites.count %>
-			</p>
-			<p>
-			<% if recipe.is_closed != false%>
-			<%= recipe.if_is_closed %><% end %>
-			</p>
-		</div>
+	<% if recipes.present? %>
+		<% recipes.each do |recipe| %>
+			<div class="recipe_div">
+				<%= link_to recipe_path(recipe) do %>
+					<%= attachment_image_tag recipe, :image, :fill, 180, 120,format: "jpeg" , fallback: "no_image.jpg", size: "180x120" %><br>
+					<%= recipe.title %>			<% end %>
+				<p class="favo_heart">
+					<span class="glyphicon glyphicon-heart"></span>
+					<%= recipe.favorites.count %>
+				</p>
+				<p>
+				<% if recipe.is_closed != false%>
+				<%= recipe.if_is_closed %><% end %>
+				</p>
+			</div>
+		<% end %>
+		<%= paginate recipes, class: "paginate" %>
+	<% else %>
+		<div class="recipe_no_message" align="center">投稿レシピはありません</div>
 	<% end %>
 </div>
