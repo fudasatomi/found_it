@@ -93,35 +93,22 @@
 }
 .can_about{
     background-color: #fafae1;
-    padding: 20px 20px 0 20px;
+    padding: 20px 20px 20px 20px;
     margin: 20px auto;
     width: 70%;
     text-align: left;
     color: #747474;
     font-size: 1.2em;
-  .can_ul{
-    list-style:  none;
-    margin:  0;
-    padding: 0;
+  ul{
+    margin: 5px;
+    padding: 5px;
   }
-  .can_li:before {
-    content:  "";
-    width: 40px;
-    height: 40px;
-    display:  inline-block;
-    position:  relative;
-    margin-right: 5px;
-    background-image:  url(yarn.png);
-    background-size: 60%;
-    background-repeat:  no-repeat;
-    vertical-align: top;
+  li{
+    padding: 5px;
   }
-  .list_test {
-    padding:  10px;
-  }
-}
 .login_btn{
   margin: auto;
   display: flex;
   justify-content: space-between;
+}
 }
