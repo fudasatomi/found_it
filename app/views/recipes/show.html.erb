@@ -71,6 +71,10 @@
 						<%= render partial:'comments/comment_index',locals: { comments: @comments, recipe: @recipe} %>
 						<% if user_signed_in? %>
 							<%= render partial: 'comments/form', locals: { comment: @comment, recipe: @recipe } %>
+						<% else %>
+							<div class="not_login" align="center">
+								<%= link_to '会員ログイン', new_user_session_path %>　をするとコメントができるようになります。
+							</div>
 						<% end %>
 					</div>
 				</div>

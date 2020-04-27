@@ -9,7 +9,11 @@
 	<% comments.each do |comment| %>
 	<tbody>
 		<tr>
-			<td><%= attachment_image_tag comment.user, :image, :fill,30,30, format: "jpeg" , fallback: "no_image.jpg", size:'30x30' %>
+			<td>
+				<% if comment.user == recipe.user %>
+					<p>このレシピの投稿者<p>
+				<% end %>
+				<%= attachment_image_tag comment.user, :image, :fill,30,30, format: "jpeg" , fallback: "no_image.jpg", size:'30x30' %>
 				<%= link_to comment.user.name, user_path(comment.user_id) %>
 			</td>
 			<td><%= comment.comment %></td>
