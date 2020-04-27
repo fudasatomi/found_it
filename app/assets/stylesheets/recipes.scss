@@ -14,6 +14,7 @@
 		border-radius: 5px;
 		border-collapse: separate;
   		border-spacing: 0;
+  		box-shadow: 2px 2px 3px #aaaaaa;
 	}
 	th{
 		font-size: 1.2em;
@@ -30,6 +31,7 @@
 		border-radius: 5px;
 		border-collapse: separate;
   		border-spacing: 0;
+  		box-shadow: 2px 2px 3px #aaaaaa;
   		h2{
   			margin: 20px;
   			color: #747474;
@@ -63,6 +65,7 @@
 		border-radius: 5px;
 		border-collapse: separate;
   		border-spacing: 0;
+  		box-shadow: 2px 2px 3px #aaaaaa;
   		h2{
   			color: #747474;
   			border-bottom: solid 3px #04949c;
@@ -95,7 +98,7 @@
 	border-radius: 5px;
 	border-collapse: separate;
 	border-spacing: 0;
-
+	box-shadow: 2px 2px 3px #aaaaaa;
 	.recipe_show_margin{
 		margin: 0 20px;
 		h2{
@@ -155,14 +158,19 @@
 	border-radius: 5px;
 	border-collapse: separate;
 	border-spacing: 0;
-
+	box-shadow: 2px 2px 3px #aaaaaa;
 	.recipe_comment_margin{
 		margin: 0 20px;
 		h3{
 	  		color: #747474;
 	  		border-bottom: solid 1.5px #04949c;
 	  	}
-
+	  	.not_login{
+		margin: 20px 0;
+		color: #747474;
+		border-top: 1px solid;
+		border-bottom: 1px solid;
+		}
   	}
 }
 // レシピ新規登録・編集
@@ -174,7 +182,7 @@
 	border-radius: 5px;
 	border-collapse: separate;
 	border-spacing: 0;
-
+	box-shadow: 2px 2px 3px #aaaaaa;
 	.recipe_new_margin{
 		margin: 0 20px;
 

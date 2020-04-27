@@ -2,18 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.home_btn{
-	margin-top: 20px;
-}
-
+// topページ
 .fovo_rank{
 		margin-top: 20px;
 		width: 100%;
 		border:0.5px solid #747474;
 		border-radius: 5px;
 		border-collapse: separate;
-  		border-spacing: 0;
-  		h3{
+  	border-spacing: 0;
+  	box-shadow: 2px 2px 3px #aaaaaa;
+    	h3{
   			color: #747474;
   			border-bottom: solid 3px #04949c;
   		}
@@ -42,15 +40,88 @@
 		border:0.5px solid #747474;
 		border-radius: 5px;
 		border-collapse: separate;
-  		border-spacing: 0;
-  	  		h3{
-  	  		border-bottom: solid 3px #04949c;
+  	border-spacing: 0;
+  	box-shadow: 2px 2px 3px #aaaaaa;
+      h3{
+  	  	border-bottom: solid 3px #04949c;
   			color: #747474;
   		}
-  			p{
-  				text-align: right;
-  			}
+  		p{
+  			text-align: right;
+  		}
   		.update_recipe_contents{
   			margin: 0 20px;
   		}
+}
+
+// Aboutページ
+.about{
+  h2{
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #04949c;
+    text-shadow:2px 1px 2px #aaaaaa;
+  }
+  h3{
+    color: #747474;
+  }
+  p{
+    text-align: center;
+    color: #747474;
+    font-size: 1.4em;
+    span{
+      font-weight: bold;
+      color: #04949c;
+      border-bottom: solid 1px #747474;
+    }
+  }
+}
+
+.about-title{
+  height: 40px;
+  width: auto;
+}
+.about_contents{
+    margin-top: 20px;
+    padding: 20px;
+    width: 100%;
+    border:0.5px solid #747474;
+    border-radius: 5px;
+    border-collapse: separate;
+    border-spacing: 0;
+    box-shadow: 2px 2px 3px #aaaaaa;
+}
+.can_about{
+    background-color: #fafae1;
+    padding: 20px 20px 0 20px;
+    margin: 20px auto;
+    width: 70%;
+    text-align: left;
+    color: #747474;
+    font-size: 1.2em;
+  .can_ul{
+    list-style:  none;
+    margin:  0;
+    padding: 0;
+  }
+  .can_li:before {
+    content:  "";
+    width: 40px;
+    height: 40px;
+    display:  inline-block;
+    position:  relative;
+    margin-right: 5px;
+    background-image:  url(yarn.png);
+    background-size: 60%;
+    background-repeat:  no-repeat;
+    vertical-align: top;
+  }
+  .list_test {
+    padding:  10px;
+  }
+}
+.login_btn{
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
 }

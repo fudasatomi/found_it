@@ -1,2 +1,41 @@
-<h1>Homes#about</h1>
-<p>Find me in app/views/homes/about.html.erb</p>
+<div class="col-xs-10 col-xs-offset-1">
+	<div class="row about">
+		<div class="about_contents">
+			<h2 align="center"><%= image_tag("logo2.png", class: "about-title") %>とは?</h2>
+			<p>ハンドメイド作品のアイデア、作り方レシピの共有サイトです<br>
+			同じ趣味を持った仲間たちのアイデアをたくさん共有する事で、<br>「作りたいものを<span>見つけた！（Found It!）</span>」と言えるサイトです<br>
+			また、共有するだけでなく、レシピを非公開にもでき自分用のレシピメモとしても使えます</p>
+		</div>
+		<div class="about_contents">
+			<h2 align="center">できること</h2>
+			<p>さまざまなレシピを見ることができます<br>
+				<div class="can_about">
+					<ul class="can_ul">
+						<li class="can_li">カテゴリーごとにレシピを検索できます</li>
+						<li class="can_li">タイトルや、材料のキーワードからもレシピを検索できます</li>
+					</ul>
+				</div>
+			</p>
+			<p>	また、会員登録をすると
+				<div class="can_about">
+					<ul class="can_ul">
+						<li class="can_li">自身のレシピを投稿することができるようになります</li>
+						<li class="can_li">レシピの公開・非公開を選べるので自分だけのメモとしてもつかえます</li>
+						<li class="can_li">コメントで投稿者に質問したり、感謝の気持ちを伝えることができます</li>
+						<li class="can_li">お気に入りのレシピに「いいね」が付けられます</li>
+					</ul>
+				</div>
+			</p>
+		</div>
+	</div>
+	<% if user_signed_in? %>
+	<% else %>
+		<div>
+			<h3 align="center">会員登録・ログインはこちら</h3>
+			<div class="col-xs-6 col-xs-offset-3 login_btn">
+				<span><%= link_to '新規会員登録',new_user_registration_path, class: "btn btn-blue btn-lg" %></span>
+				<span><%= link_to 'ログイン', new_user_session_path , class: "btn btn-blue btn-lg"%></span>
+			</div>
+		</div>
+	<% end %>
+</div>

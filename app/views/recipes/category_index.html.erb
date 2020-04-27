@@ -2,6 +2,7 @@
 	<div class="col-xs-12">
 		<%= render 'category', categories: @category_list %>
 		<div class="col-xs-8">
+			カテゴリー：<%= link_to @category.parent_category.name, category_all_index_recipe_path( @category.parent_category) %> 　＞　<%= @category.name %>
 			<article class="recipes_index">
 				<div class="row recipes_index_contents">
 				<h2><strong><%= @category.name %></strong>のレシピ一覧</h2>
