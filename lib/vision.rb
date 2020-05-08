@@ -15,20 +15,20 @@ module Vision
           },
           features: [
             {
-              type: 'SAFE_SEARCH_DETECTION'
+              type: 'LABEL_DETECTION'
             }
           ]
         }]
       }.to_json
       # Google Cloud Vision APIにリクエスト
-      uri = URI.parse(api_url) #URLの文字列をURIオブジェクトへと生成
-      https = Net::HTTP.new(uri.host, uri.port) ##リクエストを開く前のオブジェクトを作る
-      https.use_ssl = true ##SSL接続できるようにする
+      uri = URI.parse(api_url)
+      https = Net::HTTP.new(uri.host, uri.port)
+      https.use_ssl = true
       request = Net::HTTP::Post.new(uri.request_uri)
       request['Content-Type'] = 'application/json'
       response = https.request(request, params)
       # APIレスポンス出力
-      JSON.parse(response.body)['responses'][0]['safeSearchAnnotation']
+      JSON.parse(response.body)['responses'][0]['labelAnnotations'].pluck('description').take(3)
     end
   end
 end
