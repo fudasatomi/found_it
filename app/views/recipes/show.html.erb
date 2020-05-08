@@ -32,6 +32,11 @@
 					</div>
 					<div class="col-xs-7">
 						<div class="outline"><%= @recipe.outline %></div>
+					<div>
+		              <% @recipe.tags.each do |tag| %>
+		                <span class="label label-primary"><%= tag.name %></span>
+		              <% end %>
+            		</div>
 
 						<h3>レシピ材料</h3>
 						<table class="table material_table">
