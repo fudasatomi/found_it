@@ -13,6 +13,7 @@ class Recipe < ApplicationRecord
         end
 
     has_many :comments, dependent: :destroy
+ 	has_many :tags, dependent: :destroy
 
 	attachment :image
 
