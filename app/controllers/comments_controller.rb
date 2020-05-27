@@ -6,6 +6,12 @@ class CommentsController < ApplicationController
     @comment.recipe_id = @recipe.id
     @comment.save
     @comments = @recipe.comments
+    #if comment.save
+     # redirect_to recipe_path(recipe)
+    #else
+    #  @comments = Comment.where(recipe_id: recipe.id)
+    #  render "recipes/show"
+    #end
   end
 
   def destroy
