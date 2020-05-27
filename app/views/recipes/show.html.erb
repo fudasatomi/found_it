@@ -15,11 +15,21 @@
 						<%= @recipe.title %>
 						<span class="post_user">
 							<p>
-							投稿者：<%= link_to @recipe.user.name, user_path(@recipe.user.id)%>
-							<% if @recipe.user == current_user %>
-								<%= link_to "編集する", edit_recipe_path(@recipe),class: "btn btn-red btn-sm" %>
-							<%= @recipe.if_is_closed %>
-						<% end %></p>
+								投稿者：<%= link_to @recipe.user.name, user_path(@recipe.user.id)%>
+								<% if @recipe.user == current_user %>
+									<%= link_to "編集する", edit_recipe_path(@recipe),class: "btn btn-red btn-sm" %>
+									<%= @recipe.if_is_closed %>
+									<%= form_for(@recipe, url:recipe_path) do |f| %>
+									<% if @recipe.is_closed == false %>
+										<%= f.hidden_field :is_closed,:value =>'true'%>
+										<%= f.submit '非公開にする',class: "btn btn-blue btn-sm" %>
+									<% else %>
+										<%= f.hidden_field :is_closed,:value => 'false' %>
+										<%= f.submit '公開する',class: "btn btn-blue btn-sm" %>
+										<% end %>
+									<% end %>
+								<% end %>
+							</p>
 						</span>
 					</h2>
 				</div>
