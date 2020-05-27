@@ -1,11 +1,7 @@
 class UsersController < ApplicationController
   def recipes
   	@user = User.find(params[:id])
-    if @user == current_user
-    	@recipes = Recipe.where(user_id: @user.id).page(params[:page]).reverse_order
-    else
-      @recipes = Recipe.where(user_id: @user.id,is_closed: false).page(params[:page]).reverse_order
-    end
+  	@recipes = Recipe.where(user_id: @user.id)
   end
 
   def show
