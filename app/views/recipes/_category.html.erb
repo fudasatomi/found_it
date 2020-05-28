@@ -18,7 +18,7 @@
 								 <%= parent.name %>　全て
 								 <% end %></strong></h5>
 								<% parent.category.each do |sub_category| %>
-									<h5>　<%= link_to category_index_recipe_path(sub_category) do  %>
+								<h5>　<%= link_to category_index_recipe_path(sub_category) do  %>
 										<%=sub_category.name %><% end %></h5>
 								<% end %>
 							<% end %>
