@@ -25,14 +25,18 @@
 }
 
 // mainで使用する色
-// #036166(文字　濃青緑)
-// #04949c　(青緑)
-// #848484（薄灰色）
-// #747474（濃灰色）
 $clr-bluegreen: #04949c;
 $clr-gray: #747474;
 $clr-red: #9c0549;
 
+// 枠線・影の指定
+.main_frame{
+	border:0.5px solid $clr-gray;
+	border-radius: 5px;
+	border-collapse: separate;
+  	border-spacing: 0;
+  	box-shadow: 2px 2px 3px #aaaaaa;
+}
 
 // header
 header{
@@ -97,13 +101,10 @@ footer {
 }
 // devise関係
 .devise-form{
+	@extend .main_frame;
 	padding: 20px 20px 0 20px;
-	border:0.5px solid $clr-gray;
-	border-radius: 5px;
-	border-collapse: separate;
-  	border-spacing: 0;
-  	box-shadow: 2px 2px 3px #aaaaaa;
 }
+
 .devise-title{
 	margin-top: 20px;
 	font-size: 2em;

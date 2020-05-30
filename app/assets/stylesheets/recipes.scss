@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import "application.scss";
 
 // サイドバー　カテゴリー一覧
 .search_btn{
@@ -10,11 +11,7 @@
 .category_list{
 	margin-top: 30px;
 	table{
-		border:0.5px solid #747474;
-		border-radius: 5px;
-		border-collapse: separate;
-  		border-spacing: 0;
-  		box-shadow: 2px 2px 3px #aaaaaa;
+		@extend .main_frame;
 	}
 	th{
 		font-size: 1.2em;
@@ -27,11 +24,7 @@
 // 検索テーブル
 .search_table{
 		margin: 20px 0;
-		border:0.5px solid #747474;
-		border-radius: 5px;
-		border-collapse: separate;
-  		border-spacing: 0;
-  		box-shadow: 2px 2px 3px #aaaaaa;
+		@extend .main_frame;
   		h2{
   			margin: 20px;
   			color: #747474;
@@ -61,11 +54,7 @@
 .recipes_index{
 		margin-top: 20px;
 		width: 100%;
-		border:0.5px solid #747474;
-		border-radius: 5px;
-		border-collapse: separate;
-  		border-spacing: 0;
-  		box-shadow: 2px 2px 3px #aaaaaa;
+		@extend .main_frame;
   		h2{
   			color: #747474;
   			border-bottom: solid 3px #04949c;
@@ -94,11 +83,8 @@
 .recipe_show{
 	margin-top: 20px;
 	width: 100%;
-	border:0.5px solid #747474;
-	border-radius: 5px;
-	border-collapse: separate;
-	border-spacing: 0;
-	box-shadow: 2px 2px 3px #aaaaaa;
+	@extend .main_frame;
+
 	.recipe_show_margin{
 		margin: 0 20px;
 		h2{
@@ -154,11 +140,8 @@
 .comment_show{
 	margin: 20px 0;
 	width: 100%;
-	border:0.5px solid #747474;
-	border-radius: 5px;
-	border-collapse: separate;
-	border-spacing: 0;
-	box-shadow: 2px 2px 3px #aaaaaa;
+	@extend .main_frame;
+
 	.recipe_comment_margin{
 		margin: 0 20px;
 		h3{
@@ -178,11 +161,8 @@
 	margin: 20px 0px;
 	padding-bottom: 30px;
 	width: 100%;
-	border:0.5px solid #747474;
-	border-radius: 5px;
-	border-collapse: separate;
-	border-spacing: 0;
-	box-shadow: 2px 2px 3px #aaaaaa;
+	@extend .main_frame;
+
 	.recipe_new_margin{
 		margin: 0 20px;
 
