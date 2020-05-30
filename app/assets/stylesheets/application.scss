@@ -24,10 +24,20 @@
 　font-family: Arial;
 }
 
+// mainで使用する色
+// #036166(文字　濃青緑)
+// #04949c　(青緑)
+// #848484（薄灰色）
+// #747474（濃灰色）
+$clr-bluegreen: #04949c;
+$clr-gray: #747474;
+$clr-red: #9c0549;
+
+
 // header
 header{
 	a {
-	color: #04949c;
+	color: $clr-bluegreen;
 	font-size: 16px;
 	font-weight: bold;
 }
@@ -37,7 +47,7 @@ header{
 }
 	ul {
 		.topmenu :hover{
-	 	    color: #04949c;
+	 	    color: $clr-bluegreen;
 	        background-color: white;
     	}
     }
@@ -80,7 +90,7 @@ footer {
 	position: absolute;/*←絶対位置*/
 	a {
 		margin-top: 10px;
-		color: #04949c;
+		color: $clr-bluegreen;
 		font-size: 15px;
 	}
 
@@ -88,7 +98,7 @@ footer {
 // devise関係
 .devise-form{
 	padding: 20px 20px 0 20px;
-	border:0.5px solid #747474;
+	border:0.5px solid $clr-gray;
 	border-radius: 5px;
 	border-collapse: separate;
   	border-spacing: 0;
@@ -98,11 +108,11 @@ footer {
 	margin-top: 20px;
 	font-size: 2em;
 	text-align: center;
-	color: #04949c;
+	color: $clr-bluegreen;
 }
 .devise-table{
 		th{
-			color: #747474;
+			color: $clr-gray;
 			font-size: 1.1em;
 			border-top: 0px !important;
 		  	border-bottom: 0px !important;
@@ -135,8 +145,8 @@ footer {
 .btn-blue,
 .btn-blue.disabled, .btn-blue:disabled {
   color: #ffffff;
-  background-color: #04949c;
-  border-color: #04949c;
+  background-color: $clr-bluegreen;
+  border-color: $clr-bluegreen;
 }
 
 /* focusされた時の枠線の色 */
@@ -166,8 +176,8 @@ footer {
 .btn-red,
 .btn-red.disabled, .btn-red:disabled {
   color: #ffffff;
-  background-color: #9c0549;
-  border-color: #9c0549;
+  background-color: $clr-red;
+  border-color: $clr-red;
 }
 
 /* focusされた時の枠線の色 */
@@ -192,9 +202,3 @@ footer {
   border-color: #e6076b;
 }
 // ↑ボタンの色 btn-red　へ
-
-// #036166(文字　濃青緑)
-// #04949c　(青緑)
-// #848484（薄灰色）
-// #747474（濃灰色）
-// #fafae1（ヘッダー黄色）

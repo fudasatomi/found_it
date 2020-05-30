@@ -7,9 +7,6 @@
 		<div class="recipe_new">
 			<div class="row recipe_new_margin">
 				<div class="col-xs-5">
-					<h3>公開・非公開</h3>
-						<h4 align="center"><%= f.radio_button :is_closed, :true, checked: true %> 非公開　　　　<%= f.radio_button :is_closed, :false %> 公開
-						</h4>
 					<h3>画像</h3>
 					<%= attachment_image_tag @recipe, :image,:fill,300,200,fallback: "no_image.jpg", size:'300x200', id: "file-preview" %>
 						<%= f.attachment_field :image, class: "btn  item_attachment_field", id: "image_select"%>
