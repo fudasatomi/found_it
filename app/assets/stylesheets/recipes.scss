@@ -16,7 +16,7 @@
 	th{
 		font-size: 1.2em;
 		color: #fff;
-		background-color: #747474;
+		background-color: $clr-gray;
 		border-radius: 5px;
 		text-align: center;
 	}
@@ -27,14 +27,14 @@
 		@extend .main_frame;
   		h2{
   			margin: 20px;
-  			color: #747474;
-  			border-bottom: solid 3px #04949c;
+  			color: $clr-gray;
+  			border-bottom: solid 3px $clr-bluegreen;
   		}
   		.search_form{
   			margin: 20px;
   		}
 		th{
-			color: #747474;
+			color: $clr-gray;
 			font-size: 1.1em;
 			border-top: 0px !important;
 		  	border-bottom: 0px !important;
@@ -56,8 +56,8 @@
 		width: 100%;
 		@extend .main_frame;
   		h2{
-  			color: #747474;
-  			border-bottom: solid 3px #04949c;
+  			color: $clr-gray;
+  			border-bottom: solid 3px $clr-bluegreen;
   		}
   		.recipes_index_contents{
   			margin: 0 20px;
@@ -75,7 +75,7 @@
 // _recipe_index 部分テンプレート
 .favo_heart{
 	float: right;
-	color: #04949c;
+	color: $clr-bluegreen;
 }
 
 // レシピ詳細
@@ -88,8 +88,8 @@
 	.recipe_show_margin{
 		margin: 0 20px;
 		h2{
-	  		color: #747474;
-	  		border-bottom: solid 3px #04949c;
+	  		color: $clr-gray;
+	  		border-bottom: solid 3px $clr-bluegreen;
 		  	p{
 		  		font-size:0.5em;
 		  	}
@@ -97,8 +97,8 @@
 		h3{
 	  		color: #000000;
 	  		padding-top: 5px;
-	  		border-top: solid 1px #04949c;
-	  		border-bottom: solid 1px #04949c;
+	  		border-top: solid 1px $clr-bluegreen;
+	  		border-bottom: solid 1px $clr-bluegreen;
 	  		}
 	  	.outline{
 	  		margin-top: 30px;
@@ -145,12 +145,12 @@
 	.recipe_comment_margin{
 		margin: 0 20px;
 		h3{
-	  		color: #747474;
-	  		border-bottom: solid 1.5px #04949c;
+	  		color: $clr-gray;
+	  		border-bottom: solid 1.5px $clr-bluegreen;
 	  	}
 	  	.not_login{
 		margin: 20px 0;
-		color: #747474;
+		color: $clr-gray;
 		border-top: 1px solid;
 		border-bottom: 1px solid;
 		}
@@ -168,8 +168,8 @@
 
 		h3{
 			margin-top: 30px;
-	  		color: #747474;
-	  		border-bottom: solid 3px #04949c;
+	  		color: $clr-gray;
+	  		border-bottom: solid 3px $clr-bluegreen;
 	  		}
 
 	}

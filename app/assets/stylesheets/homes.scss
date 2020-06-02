@@ -11,8 +11,8 @@
 		@extend .main_frame;
 
     	h3{
-  			color: #747474;
-  			border-bottom: solid 3px #04949c;
+  			color: $clr-gray;
+  			border-bottom: solid 3px $clr-bluegreen;
   		}
   		p{
   			font-size: 1.1em;
@@ -29,7 +29,7 @@
   		}
   		.glyphicon-heart{
   			align: right;
-  			color: #04949c;
+  			color: $clr-bluegreen;
   		}
   	}
 }
@@ -39,8 +39,8 @@
 		@extend .main_frame;
 
       h3{
-  	  	border-bottom: solid 3px #04949c;
-  			color: #747474;
+  	  	border-bottom: solid 3px $clr-bluegreen;
+  			color: $clr-gray;
   		}
   		p{
   			text-align: right;
@@ -55,20 +55,20 @@
   h2{
     margin-bottom: 20px;
     font-weight: bold;
-    color: #04949c;
+    color: $clr-bluegreen;
     text-shadow:2px 1px 2px #aaaaaa;
   }
   h3{
-    color: #747474;
+    color: $clr-gray;
   }
   p{
     text-align: center;
-    color: #747474;
+    color: $clr-gray;
     font-size: 1.4em;
     span{
       font-weight: bold;
-      color: #04949c;
-      border-bottom: solid 1px #747474;
+      color: $clr-bluegreen;
+      border-bottom: solid 1px $clr-gray;
     }
   }
 }
@@ -89,7 +89,7 @@
     margin: 20px auto;
     width: 70%;
     text-align: left;
-    color: #747474;
+    color: $clr-gray;
     font-size: 1.2em;
   ul{
     margin: 5px;

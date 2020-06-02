@@ -6,7 +6,7 @@
 
 .user_profile{
 		margin: 20px;
-		border:0.5px solid #747474;
+		border:0.5px solid $clr-gray;
 		@extend .main_frame;
 
   	table{
@@ -15,7 +15,7 @@
 			th{
 			font-size: 1.2em;
 			color: #fff;
-			background-color: #747474;
+			background-color: $clr-gray;
 			border-radius: 5px;
 			text-align: center;
 			}
@@ -23,7 +23,7 @@
 		tbody{
 			th{
 			font-size: 1.1em;
-			color: #04949c;
+			color: $clr-bluegreen;
 			text-align: center;
 			}
 			.name{
@@ -34,8 +34,8 @@
 	.user_profile_margin{
 		margin: 0 20px;
 		h3{
-	  		color: #747474;
-	  		border-bottom: solid 3px #04949c;
+	  		color: $clr-gray;
+	  		border-bottom: solid 3px $clr-bluegreen;
 	  		}
 	}
 }
